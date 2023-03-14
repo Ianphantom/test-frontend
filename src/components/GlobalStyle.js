@@ -71,6 +71,9 @@ const GlobalStyle = createGlobalStyle`
         color: #FFFFFF;
     }
 
+    .indicator-purple{
+        background: #8785FF;
+    }
 
     
 `;
