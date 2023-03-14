@@ -45,6 +45,9 @@ const BoxItemContainer = styled.div`
   align-items: flex-start;
   gap: 15px;
   padding: 22px 0px;
+  &:hover {
+    cursor: pointer;
+  }
   .profile-image {
     width: 7%;
     display: flex;

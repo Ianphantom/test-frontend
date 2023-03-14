@@ -16,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
         background: #333333;
     }
 
+    hr{
+        margin: 0;
+        padding: 0;
+    }
+
     .text-regular{
         font-weight: 400;
     }
@@ -41,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
 
     .text-10{
         font-size: 10px;
-        line-height: 12px;
+        line-height: 1px;
     }
 
     .round-button-main{
@@ -70,6 +75,10 @@ const GlobalStyle = createGlobalStyle`
 
     .bg-light{
         background: #FFFFFF;
+    }
+
+    .bg-color-3{
+        background: #828282;
     }
 
     .bg-color-4{
