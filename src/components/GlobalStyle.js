@@ -39,6 +39,11 @@ const GlobalStyle = createGlobalStyle`
         line-height: 14px;
     }
 
+    .text-10{
+        font-size: 10px;
+        line-height: 12px;
+    }
+
     .round-button-main{
         width: 68px;
         height: 68px;
@@ -67,8 +72,24 @@ const GlobalStyle = createGlobalStyle`
         background: #FFFFFF;
     }
 
+    .bg-color-4{
+        background: #E0E0E0;
+    }
+
+    .text-color-primary{
+        color: #2F80ED;
+    }
+
     .text-color-white{
         color: #FFFFFF;
+    }
+
+    .text-color-3{
+        color: #828282;
+    }
+
+    .text-color-4{
+        color: #EB5757;
     }
 
     .indicator-purple{
