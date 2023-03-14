@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         font-family: 'Lato', sans-serif;
+        background: #333333;
     }
 
     .text-regular{
@@ -38,12 +39,36 @@ const GlobalStyle = createGlobalStyle`
         line-height: 14px;
     }
 
-    .round-button{
-        padding: 12px 12px;
+    .round-button-main{
+        width: 68px;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .round-button-secondary{
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
     }
 
     .bg-primary{
         background: #2F80ED;
+    }
+
+    .bg-light{
+        background: #FFFFFF;
+    }
+
+    .text-color-white{
+        color: #FFFFFF;
     }
 
 
