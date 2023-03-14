@@ -126,7 +126,8 @@ const UtilsStyled = styled.div`
     height: 737px;
     margin-bottom: 15px;
     border-radius: 8px;
-    overflow-y: auto;
+    /* overflow-y: auto;
+    position: relative;
     ::-webkit-scrollbar {
       width: 14px;
     }
@@ -136,7 +137,7 @@ const UtilsStyled = styled.div`
       background-clip: padding-box;
       border-radius: 9999px;
       background-color: #aaaaaa;
-    }
+    } */
   }
   .utils-container {
     display: flex;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // import component
 import UtilsInbox from "./UtilsInbox";
@@ -7,14 +8,19 @@ import UtilsInboxDetail from "./UtilsInboxDetail";
 const UtilsInboxContainer = () => {
   const [detailPage, setDetailPage] = useState(0);
   return (
-    <div>
+    <ContainerStyled>
       {detailPage === 0 ? (
         <UtilsInbox setDetailPage={setDetailPage} />
       ) : (
-        <UtilsInboxDetail setDetailPage={setDetailPage} />
+        <UtilsInboxDetail
+          detailPage={detailPage}
+          setDetailPage={setDetailPage}
+        />
       )}
-    </div>
+    </ContainerStyled>
   );
 };
+
+const ContainerStyled = styled.div``;
 
 export default UtilsInboxContainer;

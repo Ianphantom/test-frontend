@@ -51,27 +51,41 @@ const UtilsInbox = ({ setDetailPage }) => {
         <input type='text' placeholder='Search' onChange={filterHandler} />
         <img className='search-button' src={searchIcon} alt='search-icon' />
       </div>
-      {dataSementara.length === 0 ? (
-        <div className='text-14 noData'>Tidak ada data</div>
-      ) : (
-        dataSementara.map((item) => (
-          <div key={item.id}>
-            <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
-            {item.id !== `${dataSementara.length}` ? (
-              <hr className='bg-color-3' />
-            ) : (
-              ""
-            )}
-          </div>
-        ))
-      )}
+      <div className='messageList'>
+        {dataSementara.length === 0 ? (
+          <div className='text-14 noData'>Tidak ada data</div>
+        ) : (
+          dataSementara.map((item) => (
+            <div key={item.id}>
+              <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
+              {item.id !== `${dataSementara.length}` ? (
+                <hr className='bg-color-3' />
+              ) : (
+                ""
+              )}
+            </div>
+          ))
+        )}
+      </div>
     </InboxContainer>
   );
 };
 
 const InboxContainer = styled.div`
   padding: 24px 32px;
+  height: 734px;
+  overflow-y: auto;
+  position: relative;
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
 
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #aaaaaa;
+  }
   .noData {
     padding: 22px 0px;
   }
@@ -92,6 +106,10 @@ const InboxContainer = styled.div`
     .search-button {
       cursor: pointer;
     }
+  }
+
+  .messageList {
+    height: 90%;
   }
 `;
 
