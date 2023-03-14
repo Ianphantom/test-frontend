@@ -3,9 +3,13 @@ import styled from "styled-components";
 
 import DoublePerson from "./ProfileDoublePerson";
 
-const UtilsBoxItem = ({ item }) => {
+const UtilsBoxItem = ({ setDetailPage, item }) => {
+  const viewDetailHandler = (id) => {
+    setDetailPage(id);
+    console.log(id);
+  };
   return (
-    <BoxItemContainer>
+    <BoxItemContainer onClick={() => viewDetailHandler(item.id)}>
       <div className='profile-image'>
         {item.participant > 1 ? (
           <DoublePerson />

@@ -7,7 +7,7 @@ import UtilsBoxItem from "./UtilsInboxItem";
 // import dummy data
 import messageJson from "../dummyData/messege.json";
 
-const UtilsInbox = () => {
+const UtilsInbox = ({ setDetailPage }) => {
   //   karna nggak ada backend jadinya ngolah data nya di array yang disimpan di state aja :'v
   const [dataResult, setDataResult] = useState([]);
   const [dataSementara, setDataSementara] = useState([]);
@@ -17,7 +17,6 @@ const UtilsInbox = () => {
   const filterHandler = (e) => {
     setFilterText(e.target.value);
     if (e.target.value === "") {
-      console.log("data kosong");
       setDataSementara(dataResult);
     } else {
       const coba = dataSementara.filter((item) =>
@@ -46,11 +45,6 @@ const UtilsInbox = () => {
     setDataResult(result);
     setDataSementara(result);
   }, []);
-
-  //   const coba = dataSementara.filter((item) =>
-  //     item.nama.toLowerCase().includes("di")
-  //   );
-  //   console.log(coba);
   return (
     <InboxContainer>
       <div className='search-container text-12 text-color-3 text-regular'>
@@ -62,7 +56,7 @@ const UtilsInbox = () => {
       ) : (
         dataSementara.map((item) => (
           <div key={item.id}>
-            <UtilsBoxItem item={item} />
+            <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
             {item.id !== `${dataSementara.length}` ? (
               <hr className='bg-color-3' />
             ) : (

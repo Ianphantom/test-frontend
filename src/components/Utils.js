@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // import component
 import ActiveWidget from "./ActiveWidget";
-import UtilsInbox from "./UtilsInbox";
+import UtilsInboxContainer from "./UtilsInboxContainer";
 
 // import svg-icon
 import thunder from "../images/svg-icon/thunder.svg";
@@ -58,7 +58,11 @@ const Utils = () => {
           exit={{ opacity: 0, y: 50 }}
           className='text-container bg-light'
         >
-          {activeWidget === "Inbox" ? <UtilsInbox /> : <UtilsInbox />}
+          {activeWidget === "Inbox" ? (
+            <UtilsInboxContainer />
+          ) : (
+            <UtilsInboxContainer />
+          )}
         </motion.div>
       )}
 
