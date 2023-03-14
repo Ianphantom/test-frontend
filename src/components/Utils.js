@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // import component
 import ActiveWidget from "./ActiveWidget";
+import UtilsInbox from "./UtilsInbox";
 
 // import svg-icon
 import thunder from "../images/svg-icon/thunder.svg";
@@ -24,7 +25,7 @@ const Utils = () => {
     setActiveWidget("");
   };
 
-  const item = {
+  const anim = {
     hidden: {
       x: 100,
       opacity: 0,
@@ -50,6 +51,17 @@ const Utils = () => {
 
   return (
     <UtilsStyled>
+      {activeWidget && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          className='text-container bg-light'
+        >
+          {activeWidget === "Inbox" ? <UtilsInbox /> : <UtilsInbox />}
+        </motion.div>
+      )}
+
       <div className='utils-container'>
         <AnimatePresence>
           {mainClicked && (
@@ -59,7 +71,7 @@ const Utils = () => {
                   !item.active && (
                     <motion.div
                       key={item.id}
-                      variants={item}
+                      variants={anim}
                       animate='visible'
                       initial='hidden'
                       exit={{ opacity: 0, x: 50 }}
@@ -105,6 +117,12 @@ const UtilsStyled = styled.div`
   position: fixed;
   bottom: 27px;
   right: 34px;
+  .text-container {
+    width: 734px;
+    height: 737px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
   .utils-container {
     display: flex;
     align-items: flex-end;
