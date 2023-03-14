@@ -14,8 +14,8 @@ const ActiveWidget = ({ activeWidget, quicksMainHandler }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='circle-container'>
-        <div className='circle' onClick={quicksMainHandler}></div>
+      <div className='circle-container' onClick={quicksMainHandler}>
+        <div className='circle'></div>
         <div className={`circle ${activeWidget.toLowerCase()}`} id='full'>
           <img src={img} alt='widget-icon' />
         </div>
