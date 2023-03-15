@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // import component
 import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
+import InboxDetail from "../dummyData/messegeDetail.json";
 
-const UtilsInboxDetail = ({ detailPage }) => {
+const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
+  const [results, setResults] = useState({});
+  const [dataSementara, setDataSementara] = useState({});
+
   useEffect(() => {
     // misal kita anggap ada endpoit dengan http method GET /message/id
     // kita tinggal panggil endpoint tersebut dengan kode dibawah ini
@@ -22,10 +26,21 @@ const UtilsInboxDetail = ({ detailPage }) => {
     //   }
     // karena endpoint nya tidak ada maka saya menjalankan fungsi dibawah ini saja
     // logicnya ada json file, teruss isi nya saya filter berdasarkan id nya saja
-  }, []);
+
+    const dataReturn = InboxDetail.data;
+    const dataResult = dataReturn.filter((item) => item.id === detailPage);
+    setResults(dataResult[0]);
+    setDataSementara(dataResult[0]);
+  }, [detailPage]);
+
   return (
     <InboxDetailStyled>
-      <UtilsInboxDetailHeader className='header' />
+      <UtilsInboxDetailHeader
+        className='header'
+        setDetailPage={setDetailPage}
+        quicksMainHandler={quicksMainHandler}
+        results={results}
+      />
 
       <div className='replyContainer'>
         <input

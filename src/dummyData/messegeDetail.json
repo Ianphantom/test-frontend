@@ -1,0 +1,92 @@
+{
+    "data" : [
+        {
+            "id" : "1",
+            "title": "109220-Naturalization",
+            "timestamp": "02/06/2021 10:45",
+            "participant": "3",
+            "participantName": [
+              {
+                "id_user": "1",
+                "name": "Cameron Phillips"
+              },
+              {
+                "id_user": "2",
+                "name": "Obaidullah Amarkhil"
+              },
+              {
+                "id_user": "3",
+                "name": "You"
+              }
+            ],
+            "last_chat_read": "4",
+            "read": "false",
+            "chats": [
+              {
+                "id_message": "1",
+                "sender": "Cameron Phillips",
+                "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
+                "date": "02/06/2021",
+                "time": "19:32",
+                "repyly_to": "0"
+              },
+              {
+                "id_message": "2",
+                "sender": "you",
+                "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+                "date": "02/06/2021",
+                "time": "19:33",
+                "reply_to": "0"
+              },
+              {
+                "id_message": "3",
+                "sender": "Cameron Phillips",
+                "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+                "date": "02/06/2021",
+                "time": "19:34",
+                "reply_to": "0"
+              },
+              {
+                "id_message": "4",
+                "sender": "Obaidullah Amarkhil",
+                "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+                "date": "02/06/2021",
+                "time": "19:35",
+                "reply_to": "0"
+              },
+              {
+                "id_message": "5",
+                "sender": "Cameron Phillips",
+                "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
+                "date": "03/06/2021",
+                "time": "19:36",
+                "repyly_to": "0"
+              },
+              {
+                "id_message": "6",
+                "sender": "Obaidullah Amarkhil",
+                "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+                "date": "03/06/2021",
+                "time": "19:37",
+                "reply_to": "0"
+              },
+              {
+                "id_message": "7",
+                "sender": "Obaidullah Amarkhil",
+                "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+                "date": "03/06/2021",
+                "time": "19:38",
+                "reply_to": "0"
+              },
+              {
+                "id_message": "8",
+                "sender": "Cameron Phillips",
+                "messege": "Plese check this out!",
+                "date": "03/06/2021",
+                "time": "19:39",
+                "repyly_to": "0"
+              }
+            ]
+         }
+    ]
+}

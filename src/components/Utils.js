@@ -59,7 +59,7 @@ const Utils = () => {
           className='text-container bg-light'
         >
           {activeWidget === "Inbox" ? (
-            <UtilsInboxContainer />
+            <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
           ) : (
             <UtilsInboxContainer />
           )}

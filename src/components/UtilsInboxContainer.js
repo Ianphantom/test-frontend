@@ -5,7 +5,7 @@ import styled from "styled-components";
 import UtilsInbox from "./UtilsInbox";
 import UtilsInboxDetail from "./UtilsInboxDetail";
 
-const UtilsInboxContainer = () => {
+const UtilsInboxContainer = ({ quicksMainHandler }) => {
   const [detailPage, setDetailPage] = useState(0);
   return (
     <ContainerStyled>
@@ -15,6 +15,7 @@ const UtilsInboxContainer = () => {
         <UtilsInboxDetail
           detailPage={detailPage}
           setDetailPage={setDetailPage}
+          quicksMainHandler={quicksMainHandler}
         />
       )}
     </ContainerStyled>
