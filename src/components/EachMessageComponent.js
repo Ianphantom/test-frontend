@@ -5,20 +5,22 @@ import MoreComponent from "./MoreComponent";
 
 const EachMessegeComponent = ({ item, id }) => {
   return (
-    <EachComponent className={item.sender === "you" ? "me" : `other-${id}`}>
-      <div className='sender text-14 text-bold'>{item.sender}</div>
-      <div className='bottom'>
-        <div className='messegeContainer'>
-          <div className='text-14 text-color-2 text-regular'>
-            {item.messege}
+    <>
+      <EachComponent className={item.sender === "you" ? "me" : `other-${id}`}>
+        <div className='sender text-14 text-bold'>{item.sender}</div>
+        <div className='bottom'>
+          <div className='messegeContainer'>
+            <div className='text-14 text-color-2 text-regular'>
+              {item.messege}
+            </div>
+            <div className='time text-12 text-color-2 text-regular'>
+              {item.time}
+            </div>
           </div>
-          <div className='time text-12 text-color-2 text-regular'>
-            {item.time}
-          </div>
+          <MoreComponent />
         </div>
-        <MoreComponent />
-      </div>
-    </EachComponent>
+      </EachComponent>
+    </>
   );
 };
 

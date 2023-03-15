@@ -9,7 +9,7 @@ import MessageComponent from "./MessageComponent";
 const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
   const [dataSementara, setDataSementara] = useState({});
-
+  const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     // misal kita anggap ada endpoit dengan http method GET /message/id
     // kita tinggal panggil endpoint tersebut dengan kode dibawah ini
@@ -47,10 +47,14 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
         <MessageComponent
           dataSementara={dataSementara}
           setDataSementara={setDataSementara}
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
         />
       ) : (
         ""
       )}
+
+      {isVisible === false ? "check new Messege" : ""}
 
       <div className='replyContainer bg-light'>
         <input
