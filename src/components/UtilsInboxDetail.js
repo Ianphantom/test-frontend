@@ -4,6 +4,7 @@ import styled from "styled-components";
 // import component
 import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
 import InboxDetail from "../dummyData/messegeDetail.json";
+import MessageComponent from "./MessageComponent";
 
 const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
@@ -42,7 +43,16 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
         results={results}
       />
 
-      <div className='replyContainer'>
+      {dataSementara.hasOwnProperty("id") ? (
+        <MessageComponent
+          dataSementara={dataSementara}
+          setDataSementara={setDataSementara}
+        />
+      ) : (
+        ""
+      )}
+
+      <div className='replyContainer bg-light'>
         <input
           className='text-14'
           type='text'

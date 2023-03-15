@@ -93,6 +93,10 @@ const GlobalStyle = createGlobalStyle`
         color: #FFFFFF;
     }
 
+    .text-color-2{
+        color: #4F4F4F;
+    }
+
     .text-color-3{
         color: #828282;
     }

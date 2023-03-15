@@ -8,14 +8,17 @@
             "participantName": [
               {
                 "id_user": "1",
+                "participant_id" : "1",
                 "name": "Cameron Phillips"
               },
               {
                 "id_user": "2",
+                "participant_id" : "2",
                 "name": "Obaidullah Amarkhil"
               },
               {
                 "id_user": "3",
+                "participant_id" : "3",
                 "name": "You"
               }
             ],
@@ -48,7 +51,7 @@
               },
               {
                 "id_message": "4",
-                "sender": "Obaidullah Amarkhil",
+                "sender": "you",
                 "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
                 "date": "02/06/2021",
                 "time": "19:35",
@@ -72,7 +75,7 @@
               },
               {
                 "id_message": "7",
-                "sender": "Obaidullah Amarkhil",
+                "sender": "you",
                 "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
                 "date": "03/06/2021",
                 "time": "19:38",
