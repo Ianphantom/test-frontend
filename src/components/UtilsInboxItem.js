@@ -15,7 +15,7 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
           <DoublePerson />
         ) : (
           <div className='circle text-16 text-bold bg-primary text-color-white'>
-            {item.nama.charAt(0)}
+            {item.title.charAt(0)}
           </div>
         )}
       </div>

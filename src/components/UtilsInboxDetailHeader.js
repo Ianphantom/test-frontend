@@ -17,7 +17,6 @@ const UtilsInboxDetailHeader = ({
   const backHandler = () => {
     results.read = "true";
     setDetailPage(0);
-    console.log(results);
   };
   return (
     <>
@@ -31,9 +30,11 @@ const UtilsInboxDetailHeader = ({
               <div className='title text-16 text-bold text-color-primary'>
                 {results.title}
               </div>
-              <div className='participant text-14 text-regular text-color-2'>
-                {`${results.participant} participant`}
-              </div>
+              {results.participant > 1 ? (
+                <div className='participant text-14 text-regular text-color-2'>
+                  {`${results.participant} participant`}
+                </div>
+              ) : null}
             </div>
             <div className='close' onClick={exitHandler}>
               <img src={closeIcon} alt='close-icon' />

@@ -163,6 +163,7 @@ const InboxDetailStyled = styled(motion.div)`
         border: 1px solid #828282;
       }
       .button {
+        cursor: pointer;
         width: fit-content;
         padding: 12px 16px;
         border-radius: 8px;
