@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // import icon
@@ -10,11 +10,20 @@ const UtilsInboxDetailHeader = ({
   quicksMainHandler,
   results,
 }) => {
+  const exitHandler = () => {
+    results.read = "true";
+    quicksMainHandler();
+  };
+  const backHandler = () => {
+    results.read = "true";
+    setDetailPage(0);
+    console.log(results);
+  };
   return (
     <>
       {results.hasOwnProperty("title") ? (
         <HeaderContainer>
-          <div className='left' onClick={() => setDetailPage(0)}>
+          <div className='left' onClick={backHandler}>
             <img src={leftIcon} alt='left-icon' />
           </div>
           <div className='right'>
@@ -26,7 +35,7 @@ const UtilsInboxDetailHeader = ({
                 {`${results.participant} participant`}
               </div>
             </div>
-            <div className='close' onClick={quicksMainHandler}>
+            <div className='close' onClick={exitHandler}>
               <img src={closeIcon} alt='close-icon' />
             </div>
           </div>

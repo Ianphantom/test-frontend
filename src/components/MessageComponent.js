@@ -53,11 +53,13 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
     </div>
   ));
 
-  const renderItem = (items) => {
+  const renderItem = (items, isRead) => {
     let isShown = false;
     const processData = items.map((item) => {
-      const checkNewMessege = item.id_message === results.last_chat_read;
+      const checkNewMessege =
+        item.id_message - "1" === Number(results.last_chat_read);
       const isMeSender = item.sender === "you";
+      const isReaded = isRead === "true";
       if (!isShown && item.date === "03/06/2021") {
         isShown = true;
         return (
@@ -65,7 +67,7 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
             <div className='text-with-lines indicator today text-16 text-bold text-color-2'>
               <span>Today June 03, 2021</span>
             </div>
-            {checkNewMessege && !isMeSender ? (
+            {checkNewMessege && !isMeSender && !isReaded ? (
               <NewMessegeIndicator ref={newRef} />
             ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
@@ -74,7 +76,7 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
       } else {
         return (
           <div key={item.id_message}>
-            {checkNewMessege && !isMeSender ? (
+            {checkNewMessege && !isMeSender && !isReaded ? (
               <NewMessegeIndicator ref={newRef} />
             ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
@@ -94,7 +96,7 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
       ref={containerRef}
       onScroll={scrollHandle}
     >
-      <React.Fragment>{renderItem(results.chats)}</React.Fragment>
+      <React.Fragment>{renderItem(results.chats, results.read)}</React.Fragment>
     </MessageContainer>
   );
 };
