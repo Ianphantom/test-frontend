@@ -24,7 +24,9 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
           <div className='title text-16 text-color-primary text-bold'>
             {item.title}
           </div>
-          <div className='tanggal text-16'>{item.date}</div>
+          <div className='tanggal text-16'>
+            {item.chats[item.chats.length - 1].date}
+          </div>
         </div>
         <div className='bottom'>
           {item.participant > 1 ? (
@@ -39,16 +41,31 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
           </div>
         </div>
       </div>
-      <div className='read-information'></div>
+      {item.read === "false" ? (
+        <div className='read-information'>
+          <svg
+            width='10'
+            height='10'
+            viewBox='0 0 10 10'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M10 5C10 7.76142 7.76142 10 5 10C2.23858 10 0 7.76142 0 5C0 2.23858 2.23858 0 5 0C7.76142 0 10 2.23858 10 5Z'
+              fill='#EB5757'
+            />
+          </svg>
+        </div>
+      ) : null}
     </BoxItemContainer>
   );
 };
 
 const BoxItemContainer = styled(motion.div)`
   display: flex;
-  align-items: flex-start;
   gap: 15px;
   padding: 22px 0px;
+  align-items: center;
   &:hover {
     cursor: pointer;
   }
@@ -56,7 +73,7 @@ const BoxItemContainer = styled(motion.div)`
     width: 7%;
     display: flex;
     justify-content: center;
-
+    align-self: flex-start;
     .circle {
       width: 34px;
       height: 34px;
@@ -67,7 +84,9 @@ const BoxItemContainer = styled(motion.div)`
     }
   }
   .information {
+    width: 100%;
     display: flex;
+    align-self: flex-start;
     flex-direction: column;
     gap: 8px;
     .top {
@@ -83,6 +102,12 @@ const BoxItemContainer = styled(motion.div)`
       flex-direction: column;
       gap: 4px;
     }
+  }
+
+  .read-information {
+    height: 100%;
+    align-items: center;
+    justify-items: flex-end;
   }
 `;
 
