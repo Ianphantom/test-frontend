@@ -54,15 +54,20 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
         ""
       )}
 
-      {isVisible === false ? "check new Messege" : ""}
-
-      <div className='replyContainer bg-light'>
-        <input
-          className='text-14'
-          type='text'
-          placeholder='Type a new message'
-        />
-        <div className='button text-14 text-color-white bg-primary'>Send</div>
+      <div className='replyContainer'>
+        {isVisible === false ? (
+          <div className='new-messege-alert text-16 text-regular text-color-primary'>
+            <div className='text'>New Messege</div>
+          </div>
+        ) : null}
+        <div className='reply bg-light'>
+          <input
+            className='text-14'
+            type='text'
+            placeholder='Type a new message'
+          />
+          <div className='button text-14 text-color-white bg-primary'>Send</div>
+        </div>
       </div>
     </InboxDetailStyled>
   );
@@ -75,21 +80,37 @@ const InboxDetailStyled = styled.div`
     width: 100%;
     position: absolute;
     bottom: 0px;
-    padding: 19px 32px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    input {
+    .new-messege-alert {
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 8px;
-      outline: none;
-      border: 1px solid #828282;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      .text {
+        border-radius: 8px;
+        width: fit-content;
+        text-align: center;
+        padding: 8px 12px;
+        background: #e9f3ff;
+        margin-bottom: 12px;
+      }
     }
-    .button {
-      width: fit-content;
-      padding: 12px 16px;
-      border-radius: 8px;
+    .reply {
+      padding: 19px 32px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        outline: none;
+        border: 1px solid #828282;
+      }
+      .button {
+        width: fit-content;
+        padding: 12px 16px;
+        border-radius: 8px;
+      }
     }
   }
 `;

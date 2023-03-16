@@ -1,4 +1,4 @@
-import React, { useEffect, forwardRef, useState, useRef } from "react";
+import React, { forwardRef, useState, useRef } from "react";
 import styled from "styled-components";
 
 // import component
@@ -37,13 +37,17 @@ const MessageComponent = ({
     } else {
       setIsVisible(false);
     }
+
+    console.log(isVisible);
   };
 
-  const FancyInput = forwardRef((props, ref) => (
-    <div>
-      <div ref={ref} {...props}>
-        New Message
-      </div>
+  const NewMessegeIndicator = forwardRef((props, ref) => (
+    <div
+      className='text-with-lines indicator new-messege text-16 text-bold text-color-2'
+      ref={ref}
+      {...props}
+    >
+      <span>New Message</span>
     </div>
   ));
 
@@ -54,9 +58,11 @@ const MessageComponent = ({
         isShown = true;
         return (
           <div key={item.id_message}>
-            <div>KJAHSjklahfgkljsdfhklasdjhfkladsjhfklasdf</div>
+            <div className='text-with-lines indicator today text-16 text-bold text-color-2'>
+              <span>Today June 03, 2021</span>
+            </div>
             {item.id_message === dataSementara.last_chat_read ? (
-              <FancyInput ref={newRef} />
+              <NewMessegeIndicator ref={newRef} />
             ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
@@ -65,7 +71,7 @@ const MessageComponent = ({
         return (
           <div key={item.id_message}>
             {item.id_message === dataSementara.last_chat_read ? (
-              <FancyInput ref={newRef} />
+              <NewMessegeIndicator ref={newRef} />
             ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
@@ -97,6 +103,46 @@ const MessageContainer = styled.div`
     border-radius: 9999px;
     background-color: #aaaaaa;
   }
+
+  .text-with-lines {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 30px 0 30px;
+  }
+
+  .text-with-lines span {
+    background: #fff;
+    padding: 0 10px;
+  }
+
+  .new-messege {
+    background: #eb5757 !important;
+    color: #eb5757 !important;
+    border-bottom: 1px solid #eb5757 !important;
+  }
+  /* .text-with-lines {
+    position: relative;
+  }
+
+  .text-with-lines::before,
+  .text-with-lines::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 1px;
+    background-color: black;
+  } */
+
+  /* .text-with-lines::before {
+    left: 0;
+  }
+
+  .text-with-lines::after {
+    right: 0;
+  } */
 `;
 
 export default MessageComponent;
