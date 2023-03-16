@@ -11,9 +11,8 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
   return (
     <BoxItemContainer onClick={() => viewDetailHandler(item.id)}>
       <div className='profile-image'>
-        {item.participant > 1 ? (
-          <DoublePerson />
-        ) : (
+        {item.participant >= 2 && <DoublePerson />}
+        {item.participant < 2 && (
           <div className='circle text-16 text-bold bg-primary text-color-white'>
             {item.title.charAt(0)}
           </div>
@@ -29,19 +28,17 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
           </div>
         </div>
         <div className='bottom'>
-          {item.participant > 1 ? (
+          {item.participant > 1 && (
             <div className='userName text-14 text-bold'>
               {item.last_messege.sender}
             </div>
-          ) : (
-            ""
           )}
           <div className='message text-14 text-regular'>
             {item.last_messege.messege}
           </div>
         </div>
       </div>
-      {item.read === "false" ? (
+      {item.read === "false" && (
         <div className='read-information'>
           <svg
             width='10'
@@ -56,7 +53,7 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
             />
           </svg>
         </div>
-      ) : null}
+      )}
     </BoxItemContainer>
   );
 };

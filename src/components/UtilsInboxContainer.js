@@ -33,13 +33,15 @@ const UtilsInboxContainer = ({ quicksMainHandler }) => {
   }, []);
   return (
     <ContainerStyled>
-      {detailPage === 0 ? (
+      {detailPage === 0 && (
         <UtilsInbox
           setDetailPage={setDetailPage}
           dataSementara={dataSementara}
           setDataSementara={setDataSementara}
         />
-      ) : (
+      )}
+
+      {detailPage !== 0 && (
         <UtilsInboxDetail
           detailPage={detailPage}
           setDetailPage={setDetailPage}

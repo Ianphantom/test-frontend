@@ -67,18 +67,18 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
             <div className='text-with-lines indicator today text-16 text-bold text-color-2'>
               <span>Today June 03, 2021</span>
             </div>
-            {checkNewMessege && !isMeSender && !isReaded ? (
+            {checkNewMessege && !isMeSender && !isReaded && (
               <NewMessegeIndicator ref={newRef} />
-            ) : null}
+            )}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );
       } else {
         return (
           <div key={item.id_message}>
-            {checkNewMessege && !isMeSender && !isReaded ? (
+            {checkNewMessege && !isMeSender && !isReaded && (
               <NewMessegeIndicator ref={newRef} />
-            ) : null}
+            )}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );

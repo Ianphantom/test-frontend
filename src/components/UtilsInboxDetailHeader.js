@@ -20,7 +20,7 @@ const UtilsInboxDetailHeader = ({
   };
   return (
     <>
-      {results.hasOwnProperty("title") ? (
+      {results.hasOwnProperty("title") && (
         <HeaderContainer>
           <div className='left' onClick={backHandler}>
             <img src={leftIcon} alt='left-icon' />
@@ -30,18 +30,18 @@ const UtilsInboxDetailHeader = ({
               <div className='title text-16 text-bold text-color-primary'>
                 {results.title}
               </div>
-              {results.participant > 1 ? (
+              {results.participant > 1 && (
                 <div className='participant text-14 text-regular text-color-2'>
                   {`${results.participant} participant`}
                 </div>
-              ) : null}
+              )}
             </div>
             <div className='close' onClick={exitHandler}>
               <img src={closeIcon} alt='close-icon' />
             </div>
           </div>
         </HeaderContainer>
-      ) : null}
+      )}
     </>
   );
 };

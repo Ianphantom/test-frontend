@@ -58,10 +58,11 @@ const Utils = () => {
           exit={{ opacity: 0, y: 50 }}
           className='text-container bg-light'
         >
-          {activeWidget === "Inbox" ? (
+          {activeWidget === "Inbox" && (
             <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
-          ) : (
-            <UtilsInboxContainer />
+          )}
+          {activeWidget !== "Inbox" && (
+            <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
           )}
         </motion.div>
       )}
@@ -98,15 +99,16 @@ const Utils = () => {
             </div>
           )}
         </AnimatePresence>
-
-        {activeWidget === "" ? (
+        {activeWidget === "" && (
           <div
             className='main-icon round-button-main bg-primary'
             onClick={quicksMainHandler}
           >
             <img src={thunder} alt='thunder-icon' />
           </div>
-        ) : (
+        )}
+
+        {activeWidget !== "" && (
           <ActiveWidget
             activeWidget={activeWidget}
             quicksMainHandler={quicksMainHandler}

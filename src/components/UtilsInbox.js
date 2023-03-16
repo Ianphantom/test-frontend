@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import searchIcon from "../images/svg-icon/search.svg";
+import loading from "../images/svg-icon/loading.svg";
 import UtilsBoxItem from "./UtilsInboxItem";
 
 const UtilsInbox = ({ setDetailPage, dataSementara, setDataSementara }) => {
   const [filterText, setFilterText] = useState("");
   const [dataResult, setDataResult] = useState(dataSementara);
+  const [isLoading, setIsLoading] = useState(true);
 
   // karna nggak ada API search item nya, difilter manual saja
   const filterHandler = (e) => {
@@ -24,6 +26,9 @@ const UtilsInbox = ({ setDetailPage, dataSementara, setDataSementara }) => {
 
   useEffect(() => {
     setDataResult(dataSementara);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
   }, [dataSementara]);
 
   // console.log(result);
@@ -33,22 +38,30 @@ const UtilsInbox = ({ setDetailPage, dataSementara, setDataSementara }) => {
         <input type='text' placeholder='Search' onChange={filterHandler} />
         <img className='search-button' src={searchIcon} alt='search-icon' />
       </div>
-      <motion.div className='messageList'>
-        {dataResult.length === 0 ? (
-          <div className='text-14 noData'>Tidak ada data</div>
-        ) : (
-          dataResult.map((item) => (
-            <div key={item.id}>
-              <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
-              {item.id !== `${dataResult.length}` ? (
-                <hr className='bg-color-3' />
-              ) : (
-                ""
-              )}
-            </div>
-          ))
-        )}
-      </motion.div>
+
+      {isLoading && (
+        <div className='isLoading'>
+          <img src={loading} alt={"loading-icon"} />
+          <div className='text-color-2 text-14 '>Loading Chats</div>
+        </div>
+      )}
+
+      {!isLoading && (
+        <motion.div className='messageList'>
+          {dataResult.length === 0 && (
+            <div className='text-14 noData'>Tidak ada data</div>
+          )}
+          {dataResult.length !== 0 &&
+            dataResult.map((item) => (
+              <div key={item.id}>
+                <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
+                {item.id !== `${dataResult.length}` && (
+                  <hr className='bg-color-3' />
+                )}
+              </div>
+            ))}
+        </motion.div>
+      )}
     </InboxContainer>
   );
 };
@@ -92,6 +105,18 @@ const InboxContainer = styled.div`
 
   .messageList {
     height: 90%;
+  }
+
+  .isLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    img {
+      width: 60px;
+      height: 60px;
+    }
   }
 `;
 

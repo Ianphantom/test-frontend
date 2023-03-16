@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 // import component
 import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
-// import InboxDetail from "../dummyData/messegeDetail.json";
 import MessageComponent from "./MessageComponent";
 import { motion } from "framer-motion";
 
@@ -89,26 +88,25 @@ const UtilsInboxDetail = ({
         results={results}
       />
 
-      {results.hasOwnProperty("chats") ? (
+      {results.hasOwnProperty("chats") && (
         <MessageComponent
           results={results}
           setResults={setResults}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
         />
-      ) : (
-        ""
       )}
 
       <div className='replyContainer'>
-        {isVisible === false ? (
+        {isVisible === false && (
           <div
             className='new-messege-alert text-16 text-regular text-color-primary'
             onClick={scrollHandler}
           >
             <div className='text'>New Messege</div>
           </div>
-        ) : null}
+        )}
+
         <div className='reply bg-light'>
           <input
             className='text-14'
