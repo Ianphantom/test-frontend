@@ -3,13 +3,20 @@ import styled from "styled-components";
 
 // import component
 import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
-import InboxDetail from "../dummyData/messegeDetail.json";
+// import InboxDetail from "../dummyData/messegeDetail.json";
 import MessageComponent from "./MessageComponent";
 import { motion } from "framer-motion";
 
-const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
-  const [results, setResults] = useState({});
-  const [dataSementara, setDataSementara] = useState({});
+const UtilsInboxDetail = ({
+  detailPage,
+  setDetailPage,
+  quicksMainHandler,
+  dataSementara,
+  setDataSementara,
+}) => {
+  const [results, setResults] = useState(
+    dataSementara.filter((item) => item.id === detailPage).shift()
+  );
   const [isVisible, setIsVisible] = useState(true);
   const [inputUser, setInputUser] = useState("");
 
@@ -26,7 +33,7 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
     if (inputUser.length === 0) {
       alert("Masukkan pesan terlebih dahulu");
     } else {
-      const last_id = dataSementara.chats.length;
+      const last_id = results.chats.length;
 
       const newMessege = {
         id_message: `${last_id + 1}`,
@@ -37,13 +44,17 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
         repyly_to: "0",
       };
 
-      const newsChat = dataSementara.chats;
+      const lastMessage = {
+        sender: "you",
+        messege: `${inputUser}`,
+      };
+
+      let newsChat = results.chats.map((item) => item);
       newsChat.push(newMessege);
-      setDataSementara({
-        ...dataSementara,
-        chat: newsChat,
-        last_chat_read: last_id + 1,
-      });
+      results.chats = newsChat;
+      results.last_messege = lastMessage;
+      results.last_chat_read = `${last_id + 1}`;
+      console.log(results);
       setInputUser("");
     }
 
@@ -67,12 +78,7 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
     //   }
     // karena endpoint nya tidak ada maka saya menjalankan fungsi dibawah ini saja
     // logicnya ada json file, teruss isi nya saya filter berdasarkan id nya saja
-
-    const dataReturn = InboxDetail.data;
-    const dataResult = dataReturn.filter((item) => item.id === detailPage);
-    setResults(dataResult[0]);
-    setDataSementara(dataResult[0]);
-  }, [detailPage]);
+  }, []);
 
   return (
     <InboxDetailStyled>
@@ -83,10 +89,10 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
         results={results}
       />
 
-      {dataSementara.hasOwnProperty("id") ? (
+      {results.hasOwnProperty("chats") ? (
         <MessageComponent
-          dataSementara={dataSementara}
-          setDataSementara={setDataSementara}
+          results={results}
+          setResults={setResults}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
         />

@@ -7,7 +7,6 @@ import DoublePerson from "./ProfileDoublePerson";
 const UtilsBoxItem = ({ setDetailPage, item }) => {
   const viewDetailHandler = (id) => {
     setDetailPage(id);
-    console.log(id);
   };
   return (
     <BoxItemContainer onClick={() => viewDetailHandler(item.id)}>
@@ -23,9 +22,9 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
       <div className='information'>
         <div className='top'>
           <div className='title text-16 text-color-primary text-bold'>
-            {item.nama}
+            {item.title}
           </div>
-          <div className='tanggal text-16'>{item.tanggal}</div>
+          <div className='tanggal text-16'>{item.date}</div>
         </div>
         <div className='bottom'>
           {item.participant > 1 ? (

@@ -1,51 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import searchIcon from "../images/svg-icon/search.svg";
 import UtilsBoxItem from "./UtilsInboxItem";
 
-// import dummy data
-import messageJson from "../dummyData/messege.json";
-
-const UtilsInbox = ({ setDetailPage }) => {
-  //   karna nggak ada backend jadinya ngolah data nya di array yang disimpan di state aja :'v
-  const [dataResult, setDataResult] = useState([]);
-  const [dataSementara, setDataSementara] = useState([]);
+const UtilsInbox = ({ setDetailPage, dataSementara, setDataSementara }) => {
   const [filterText, setFilterText] = useState("");
+  const [dataResult, setDataResult] = useState(dataSementara);
 
   // karna nggak ada API search item nya, difilter manual saja
   const filterHandler = (e) => {
     setFilterText(e.target.value);
     if (e.target.value === "") {
-      setDataSementara(dataResult);
+      setDataResult(dataSementara);
     } else {
       const coba = dataSementara.filter((item) =>
-        item.nama.toLowerCase().includes(filterText.toLowerCase())
+        item.title.toLowerCase().includes(filterText.toLowerCase())
       );
-      setDataSementara(coba);
+      setDataResult(coba);
     }
   };
 
   useEffect(() => {
-    // misal ada fungsi fetching seperti ini
-    // async function getData(url) {
-    //     try {
-    //       const response = await fetch(url);
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //       }
-    //       const data = await response.json();
-    //       console.log(data);
-    //     } catch (error) {
-    //       console.error(error);
-    //     }
-    //   }
-    // anggap data yang direturn tadi messageJSON
-    const result = messageJson.data;
-    setDataResult(result);
-    setDataSementara(result);
-  }, []);
+    setDataResult(dataSementara);
+  }, [dataSementara]);
+
+  // console.log(result);
   return (
     <InboxContainer>
       <div className='search-container text-12 text-color-3 text-regular'>
@@ -53,13 +34,13 @@ const UtilsInbox = ({ setDetailPage }) => {
         <img className='search-button' src={searchIcon} alt='search-icon' />
       </div>
       <motion.div className='messageList'>
-        {dataSementara.length === 0 ? (
+        {dataResult.length === 0 ? (
           <div className='text-14 noData'>Tidak ada data</div>
         ) : (
-          dataSementara.map((item) => (
+          dataResult.map((item) => (
             <div key={item.id}>
               <UtilsBoxItem setDetailPage={setDetailPage} item={item} />
-              {item.id !== `${dataSementara.length}` ? (
+              {item.id !== `${dataResult.length}` ? (
                 <hr className='bg-color-3' />
               ) : (
                 ""

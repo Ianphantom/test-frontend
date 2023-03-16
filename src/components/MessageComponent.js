@@ -5,15 +5,11 @@ import styled from "styled-components";
 // import component
 import EachMessegeComponent from "./EachMessageComponent";
 
-const MessageComponent = ({
-  dataSementara,
-  setDataSementara,
-  setIsVisible,
-}) => {
+const MessageComponent = ({ results, setResult, setIsVisible }) => {
   const newRef = React.createRef();
   const containerRef = useRef(null);
   const [user] = useState(
-    dataSementara.participantName.filter((item) => item.name !== "You")
+    results.participantName.filter((item) => item.name !== "You")
   );
 
   const getById = (sender) => {
@@ -60,7 +56,8 @@ const MessageComponent = ({
   const renderItem = (items) => {
     let isShown = false;
     const processData = items.map((item) => {
-      const checkNewMessege = item.id_message === dataSementara.last_chat_read;
+      const checkNewMessege = item.id_message === results.last_chat_read;
+      const isMeSender = item.sender === "you";
       if (!isShown && item.date === "03/06/2021") {
         isShown = true;
         return (
@@ -68,14 +65,18 @@ const MessageComponent = ({
             <div className='text-with-lines indicator today text-16 text-bold text-color-2'>
               <span>Today June 03, 2021</span>
             </div>
-            {checkNewMessege ? <NewMessegeIndicator ref={newRef} /> : null}
+            {checkNewMessege && !isMeSender ? (
+              <NewMessegeIndicator ref={newRef} />
+            ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );
       } else {
         return (
           <div key={item.id_message}>
-            {checkNewMessege ? <NewMessegeIndicator ref={newRef} /> : null}
+            {checkNewMessege && !isMeSender ? (
+              <NewMessegeIndicator ref={newRef} />
+            ) : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );
@@ -93,7 +94,7 @@ const MessageComponent = ({
       ref={containerRef}
       onScroll={scrollHandle}
     >
-      <React.Fragment>{renderItem(dataSementara.chats)}</React.Fragment>
+      <React.Fragment>{renderItem(results.chats)}</React.Fragment>
     </MessageContainer>
   );
 };

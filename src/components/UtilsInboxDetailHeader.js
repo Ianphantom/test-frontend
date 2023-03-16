@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // import icon
@@ -11,24 +11,28 @@ const UtilsInboxDetailHeader = ({
   results,
 }) => {
   return (
-    <HeaderContainer>
-      <div className='left' onClick={() => setDetailPage(0)}>
-        <img src={leftIcon} alt='left-icon' />
-      </div>
-      <div className='right'>
-        <div className='information'>
-          <div className='title text-16 text-bold text-color-primary'>
-            {results.title}
+    <>
+      {results.hasOwnProperty("title") ? (
+        <HeaderContainer>
+          <div className='left' onClick={() => setDetailPage(0)}>
+            <img src={leftIcon} alt='left-icon' />
           </div>
-          <div className='participant text-14 text-regular text-color-2'>
-            {`${results.participant} participant`}
+          <div className='right'>
+            <div className='information'>
+              <div className='title text-16 text-bold text-color-primary'>
+                {results.title}
+              </div>
+              <div className='participant text-14 text-regular text-color-2'>
+                {`${results.participant} participant`}
+              </div>
+            </div>
+            <div className='close' onClick={quicksMainHandler}>
+              <img src={closeIcon} alt='close-icon' />
+            </div>
           </div>
-        </div>
-        <div className='close' onClick={quicksMainHandler}>
-          <img src={closeIcon} alt='close-icon' />
-        </div>
-      </div>
-    </HeaderContainer>
+        </HeaderContainer>
+      ) : null}
+    </>
   );
 };
 
