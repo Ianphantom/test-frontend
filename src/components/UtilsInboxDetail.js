@@ -11,31 +11,42 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
   const [dataSementara, setDataSementara] = useState({});
   const [isVisible, setIsVisible] = useState(true);
+  const [inputUser, setInputUser] = useState("");
 
   const scrollHandler = () => {
     const scrollDiv = document.querySelector(`.new-messege`);
     scrollDiv.scrollIntoView();
   };
 
+  const inputHandler = (e) => {
+    setInputUser(e.target.value);
+  };
+
   const sendHandler = () => {
-    const last_id = dataSementara.chats.length;
+    if (inputUser.length === 0) {
+      alert("Masukkan pesan terlebih dahulu");
+    } else {
+      const last_id = dataSementara.chats.length;
 
-    const newMessege = {
-      id_message: `${last_id + 1}`,
-      sender: "you",
-      messege: "Be carefull itu panas dalam yaa. jangan digangu dulu",
-      date: "03/06/2021",
-      time: "19:39",
-      repyly_to: "0",
-    };
+      const newMessege = {
+        id_message: `${last_id + 1}`,
+        sender: "you",
+        messege: `${inputUser}`,
+        date: "03/06/2021",
+        time: "19:39",
+        repyly_to: "0",
+      };
 
-    const newsChat = dataSementara.chats;
-    newsChat.push(newMessege);
-    setDataSementara({
-      ...dataSementara,
-      chat: newsChat,
-      last_chat_read: last_id + 1,
-    });
+      const newsChat = dataSementara.chats;
+      newsChat.push(newMessege);
+      setDataSementara({
+        ...dataSementara,
+        chat: newsChat,
+        last_chat_read: last_id + 1,
+      });
+      setInputUser("");
+    }
+
     // setDataSementara(dataSementara.chats.push(newMessege));
   };
 
@@ -97,6 +108,8 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
             className='text-14'
             type='text'
             placeholder='Type a new message'
+            onChange={inputHandler}
+            value={inputUser}
           />
           <div
             className='button text-14 text-color-white bg-primary'
