@@ -9,7 +9,7 @@ import MessageComponent from "./MessageComponent";
 const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
   const [dataSementara, setDataSementara] = useState({});
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const scrollHandler = () => {
     const scrollDiv = document.querySelector(`.new-messege`);

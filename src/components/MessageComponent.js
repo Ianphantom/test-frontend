@@ -24,18 +24,22 @@ const MessageComponent = ({
     const container = containerRef.current;
     const element = newRef.current;
 
-    const containerTop = container.getBoundingClientRect().top;
-    const containerHeight = container.offsetHeight;
-    const elementTop = element.getBoundingClientRect().top;
-    const elementHeight = element.offsetHeight;
+    if (element !== null) {
+      const containerTop = container.getBoundingClientRect().top;
+      const containerHeight = container.offsetHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      const elementHeight = element.offsetHeight;
 
-    if (
-      elementTop - containerTop >= 0 &&
-      elementTop + elementHeight - containerTop <= containerHeight
-    ) {
-      setIsVisible(true);
+      if (
+        elementTop - containerTop >= 0 &&
+        elementTop + elementHeight - containerTop <= containerHeight
+      ) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     } else {
-      setIsVisible(false);
+      setIsVisible(true);
     }
 
     console.log(isVisible);
@@ -122,27 +126,6 @@ const MessageContainer = styled.div`
     color: #eb5757 !important;
     border-bottom: 1px solid #eb5757 !important;
   }
-  /* .text-with-lines {
-    position: relative;
-  }
-
-  .text-with-lines::before,
-  .text-with-lines::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 1px;
-    background-color: black;
-  } */
-
-  /* .text-with-lines::before {
-    left: 0;
-  }
-
-  .text-with-lines::after {
-    right: 0;
-  } */
 `;
 
 export default MessageComponent;
