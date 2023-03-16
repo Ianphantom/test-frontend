@@ -10,6 +10,11 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
   const [dataSementara, setDataSementara] = useState({});
   const [isVisible, setIsVisible] = useState(false);
+
+  const scrollHandler = () => {
+    const scrollDiv = document.querySelector(`.new-messege`);
+    scrollDiv.scrollIntoView();
+  };
   useEffect(() => {
     // misal kita anggap ada endpoit dengan http method GET /message/id
     // kita tinggal panggil endpoint tersebut dengan kode dibawah ini
@@ -56,7 +61,10 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
 
       <div className='replyContainer'>
         {isVisible === false ? (
-          <div className='new-messege-alert text-16 text-regular text-color-primary'>
+          <div
+            className='new-messege-alert text-16 text-regular text-color-primary'
+            onClick={scrollHandler}
+          >
             <div className='text'>New Messege</div>
           </div>
         ) : null}
