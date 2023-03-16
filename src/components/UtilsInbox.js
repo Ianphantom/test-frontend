@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import searchIcon from "../images/svg-icon/search.svg";
 import UtilsBoxItem from "./UtilsInboxItem";
@@ -51,7 +52,7 @@ const UtilsInbox = ({ setDetailPage }) => {
         <input type='text' placeholder='Search' onChange={filterHandler} />
         <img className='search-button' src={searchIcon} alt='search-icon' />
       </div>
-      <div className='messageList'>
+      <motion.div className='messageList'>
         {dataSementara.length === 0 ? (
           <div className='text-14 noData'>Tidak ada data</div>
         ) : (
@@ -66,7 +67,7 @@ const UtilsInbox = ({ setDetailPage }) => {
             </div>
           ))
         )}
-      </div>
+      </motion.div>
     </InboxContainer>
   );
 };

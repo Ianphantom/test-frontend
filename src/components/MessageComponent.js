@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { forwardRef, useState, useRef } from "react";
 import styled from "styled-components";
 
@@ -8,7 +9,6 @@ const MessageComponent = ({
   dataSementara,
   setDataSementara,
   setIsVisible,
-  isVisible,
 }) => {
   const newRef = React.createRef();
   const containerRef = useRef(null);
@@ -18,6 +18,10 @@ const MessageComponent = ({
 
   const getById = (sender) => {
     return user.findIndex((item) => item.name === sender);
+  };
+
+  const changeVisibility = (check) => {
+    setIsVisible(check);
   };
 
   const scrollHandle = () => {
@@ -34,15 +38,13 @@ const MessageComponent = ({
         elementTop - containerTop >= 0 &&
         elementTop + elementHeight - containerTop <= containerHeight
       ) {
-        setIsVisible(true);
+        changeVisibility(true);
       } else {
-        setIsVisible(false);
+        changeVisibility(false);
       }
     } else {
-      setIsVisible(true);
+      changeVisibility(true);
     }
-
-    console.log(isVisible);
   };
 
   const NewMessegeIndicator = forwardRef((props, ref) => (
@@ -58,6 +60,7 @@ const MessageComponent = ({
   const renderItem = (items) => {
     let isShown = false;
     const processData = items.map((item) => {
+      const checkNewMessege = item.id_message === dataSementara.last_chat_read;
       if (!isShown && item.date === "03/06/2021") {
         isShown = true;
         return (
@@ -65,18 +68,14 @@ const MessageComponent = ({
             <div className='text-with-lines indicator today text-16 text-bold text-color-2'>
               <span>Today June 03, 2021</span>
             </div>
-            {item.id_message === dataSementara.last_chat_read ? (
-              <NewMessegeIndicator ref={newRef} />
-            ) : null}
+            {checkNewMessege ? <NewMessegeIndicator ref={newRef} /> : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );
       } else {
         return (
           <div key={item.id_message}>
-            {item.id_message === dataSementara.last_chat_read ? (
-              <NewMessegeIndicator ref={newRef} />
-            ) : null}
+            {checkNewMessege ? <NewMessegeIndicator ref={newRef} /> : null}
             <EachMessegeComponent item={item} id={getById(item.sender)} />
           </div>
         );
@@ -87,13 +86,19 @@ const MessageComponent = ({
   };
 
   return (
-    <MessageContainer ref={containerRef} onScroll={scrollHandle}>
+    <MessageContainer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      ref={containerRef}
+      onScroll={scrollHandle}
+    >
       <React.Fragment>{renderItem(dataSementara.chats)}</React.Fragment>
     </MessageContainer>
   );
 };
 
-const MessageContainer = styled.div`
+const MessageContainer = styled(motion.div)`
   padding: 14px 32px;
   height: 60vh;
   overflow-y: scroll;

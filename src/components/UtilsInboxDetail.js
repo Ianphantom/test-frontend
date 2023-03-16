@@ -5,6 +5,7 @@ import styled from "styled-components";
 import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
 import InboxDetail from "../dummyData/messegeDetail.json";
 import MessageComponent from "./MessageComponent";
+import { motion } from "framer-motion";
 
 const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
   const [results, setResults] = useState({});
@@ -15,6 +16,29 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
     const scrollDiv = document.querySelector(`.new-messege`);
     scrollDiv.scrollIntoView();
   };
+
+  const sendHandler = () => {
+    const last_id = dataSementara.chats.length;
+
+    const newMessege = {
+      id_message: `${last_id + 1}`,
+      sender: "you",
+      messege: "Be carefull itu panas dalam yaa. jangan digangu dulu",
+      date: "03/06/2021",
+      time: "19:39",
+      repyly_to: "0",
+    };
+
+    const newsChat = dataSementara.chats;
+    newsChat.push(newMessege);
+    setDataSementara({
+      ...dataSementara,
+      chat: newsChat,
+      last_chat_read: last_id + 1,
+    });
+    // setDataSementara(dataSementara.chats.push(newMessege));
+  };
+
   useEffect(() => {
     // misal kita anggap ada endpoit dengan http method GET /message/id
     // kita tinggal panggil endpoint tersebut dengan kode dibawah ini
@@ -74,14 +98,19 @@ const UtilsInboxDetail = ({ detailPage, setDetailPage, quicksMainHandler }) => {
             type='text'
             placeholder='Type a new message'
           />
-          <div className='button text-14 text-color-white bg-primary'>Send</div>
+          <div
+            className='button text-14 text-color-white bg-primary'
+            onClick={sendHandler}
+          >
+            Send
+          </div>
         </div>
       </div>
     </InboxDetailStyled>
   );
 };
 
-const InboxDetailStyled = styled.div`
+const InboxDetailStyled = styled(motion.div)`
   height: 734px;
   position: relative;
   .replyContainer {

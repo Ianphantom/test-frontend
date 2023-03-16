@@ -6,7 +6,13 @@ import MoreComponent from "./MoreComponent";
 const EachMessegeComponent = ({ item, id }) => {
   return (
     <>
-      <EachComponent className={item.sender === "you" ? "me" : `other-${id}`}>
+      <EachComponent
+        className={
+          item.sender === "you"
+            ? `me ${item.id_message} messegeComponent`
+            : `other-${id} ${item.id_message} messegeComponent`
+        }
+      >
         <div className='sender text-14 text-bold'>{item.sender}</div>
         <div className='bottom'>
           <div className='messegeContainer'>

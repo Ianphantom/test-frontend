@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
@@ -44,7 +45,7 @@ const UtilsBoxItem = ({ setDetailPage, item }) => {
   );
 };
 
-const BoxItemContainer = styled.div`
+const BoxItemContainer = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   gap: 15px;
