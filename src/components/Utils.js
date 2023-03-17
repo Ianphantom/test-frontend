@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // import component
 import ActiveWidget from "./ActiveWidget";
 import UtilsInboxContainer from "./UtilsInboxContainer";
+import TaskContainer from "./TaskContainer";
 
 // import svg-icon
 import thunder from "../images/svg-icon/thunder.svg";
@@ -62,7 +63,7 @@ const Utils = () => {
             <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
           )}
           {activeWidget !== "Inbox" && (
-            <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
+            <TaskContainer quicksMainHandler={quicksMainHandler} />
           )}
         </motion.div>
       )}

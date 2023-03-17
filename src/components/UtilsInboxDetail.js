@@ -6,6 +6,8 @@ import UtilsInboxDetailHeader from "./UtilsInboxDetailHeader";
 import MessageComponent from "./MessageComponent";
 import { motion } from "framer-motion";
 
+import loading from "../images/svg-icon/loading.svg";
+
 const UtilsInboxDetail = ({
   detailPage,
   setDetailPage,
@@ -53,7 +55,6 @@ const UtilsInboxDetail = ({
       results.chats = newsChat;
       results.last_messege = lastMessage;
       results.last_chat_read = `${last_id + 1}`;
-      console.log(results);
       setInputUser("");
     }
 
@@ -106,6 +107,20 @@ const UtilsInboxDetail = ({
             <div className='text'>New Messege</div>
           </div>
         )}
+
+        {results.hasOwnProperty("waitConnection") &&
+          results.waitConnection === "true" && (
+            <div className='waiting-connection'>
+              <div className='information'>
+                <div>
+                  <img src={loading} alt='Loading-icon' />
+                </div>
+                <div className='text-14 text-color-2'>
+                  Please wait while we connect you with one of our team..
+                </div>
+              </div>
+            </div>
+          )}
 
         <div className='reply bg-light'>
           <input
@@ -165,6 +180,23 @@ const InboxDetailStyled = styled(motion.div)`
         width: fit-content;
         padding: 12px 16px;
         border-radius: 8px;
+      }
+    }
+
+    .waiting-connection {
+      padding: 5px 32px;
+
+      .information {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 10px;
+        background: #e9f3ff;
+        border-radius: 5px;
+        img {
+          width: 35px;
+          height: 35px;
+        }
       }
     }
   }

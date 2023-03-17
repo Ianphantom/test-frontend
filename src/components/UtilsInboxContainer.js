@@ -12,6 +12,7 @@ const UtilsInboxContainer = ({ quicksMainHandler }) => {
   const [detailPage, setDetailPage] = useState(0);
   const [dataResult, setDataResult] = useState([]);
   const [dataSementara, setDataSementara] = useState([]);
+  console.log(dataResult);
   useEffect(() => {
     // misal ada fungsi fetching seperti ini
     // async function getData(url) {
