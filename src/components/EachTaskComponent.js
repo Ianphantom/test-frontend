@@ -9,7 +9,7 @@ import more from "../images/svg-icon/more.svg";
 import { isCompositeComponent } from "react-dom/test-utils";
 
 const EachTaskComponent = ({ item }) => {
-  const [isClicked, setIsClicked] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
 
   // di hardcode dulu
@@ -37,10 +37,16 @@ const EachTaskComponent = ({ item }) => {
   };
 
   useEffect(() => {
-    setIsClicked(false);
-  }, []);
+    if (item.finished !== "true") {
+      setIsClicked(true);
+    }
+  }, [item]);
   return (
-    <EachTaskStyled>
+    <EachTaskStyled
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+    >
       <div className='checkboxContainer'>
         <input type='checkbox' name='finished' id='finished' />
       </div>
@@ -145,7 +151,7 @@ const EachTaskComponent = ({ item }) => {
   );
 };
 
-const EachTaskStyled = styled.div`
+const EachTaskStyled = styled(motion.div)`
   padding: 22px 0px;
   display: flex;
   border-bottom: 1px solid #828282;

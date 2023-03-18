@@ -19,7 +19,9 @@ const TaskHeader = ({ nowShowing, setNowShowing }) => {
       <div className='left'>
         <div className='mytask'>
           <div className='button' onClick={clickHandler}>
-            <div className='text text-14 text-bold text-color-2'>My Task</div>
+            <div className='text text-14 text-bold text-color-2'>
+              {nowShowing}
+            </div>
             <div>
               <img src={down} alt='down-icon' />
             </div>
@@ -83,6 +85,7 @@ const TaskHeaderStyled = styled.div`
         border-radius: 5px;
         position: absolute;
         .item-option {
+          cursor: pointer;
           padding: 13px 13px;
         }
       }
