@@ -10,18 +10,28 @@ const TaskContainer = () => {
   const [nowShowing, setNowShowing] = useState("All Task");
   const [dataFilter, setDataFilter] = useState([]);
 
+  const saveToResult = (item) => {
+    const newData = dataResult;
+    newData[item.id - 1] = item;
+    setDataResult(newData);
+  };
+
   useEffect(() => {
     const filter = nowShowing === "All Task" ? "" : nowShowing;
     let data = dataResult.filter((item) => item.tag.includes(filter));
     console.log(data);
     setDataFilter(data);
-  }, [nowShowing, dataResult]);
+  }, [dataResult, nowShowing]);
 
   return (
     <TaskContainerStyled>
       <TaskHeader nowShowing={nowShowing} setNowShowing={setNowShowing} />
       {dataFilter.map((item) => (
-        <EachTaskComponent key={item.id} item={item} />
+        <EachTaskComponent
+          key={item.id}
+          item={item}
+          saveToResult={saveToResult}
+        />
       ))}
     </TaskContainerStyled>
   );

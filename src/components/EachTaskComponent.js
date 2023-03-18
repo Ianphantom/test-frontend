@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -7,9 +7,51 @@ import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
 
-const EachTaskComponent = ({ item }) => {
+const EachTaskComponent = ({ item, saveToResult }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
+  const [descriptionValue, setDescriptiionValue] = useState("");
+  const [previousDescriptionValue, setPreviousDescriptionValue] = useState("");
+  const [dateValue, setDateValue] = useState(item.deadline);
+
+  const textAreaInput = useRef(null);
+
+  const descriptionHandler = (e) => {
+    setDescriptiionValue(e.target.value);
+  };
+
+  const dateHandler = (e) => {
+    setDateValue(e.target.value);
+  };
+
+  const saveNewDate = () => {
+    const newData = {
+      ...item,
+      deadline: dateValue,
+    };
+    console.log(dateValue);
+    saveToResult(newData);
+  };
+
+  const saveDescriptionValue = () => {
+    const textAreaValue = textAreaInput.current.value;
+    let newText;
+    if (descriptionValue === "") {
+      if (textAreaValue === "") {
+        newText = "No Description";
+      } else {
+        newText = textAreaValue;
+      }
+    } else {
+      newText = descriptionValue;
+    }
+    const newData = {
+      ...item,
+      notes: newText,
+    };
+
+    saveToResult(newData);
+  };
 
   // di hardcode dulu
   const currentDate = new Date("06/10/2021");
@@ -82,9 +124,9 @@ const EachTaskComponent = ({ item }) => {
           </div>
           <div className='right-header text-14'>
             {item.finished === "false" && (
-              <React.Fragment>{countDown(item.deadline)}</React.Fragment>
+              <React.Fragment>{countDown(dateValue)}</React.Fragment>
             )}
-            <React.Fragment>{getDeadline(item.deadline)}</React.Fragment>
+            <React.Fragment>{getDeadline(dateValue)}</React.Fragment>
             <div className='toogleContainer'>
               {isClicked && (
                 <img
@@ -100,6 +142,7 @@ const EachTaskComponent = ({ item }) => {
                   src={down}
                   alt={"detail-icon"}
                   onClick={clickHandler}
+                  onBlur={saveNewDate}
                 />
               )}
             </div>
@@ -145,6 +188,8 @@ const EachTaskComponent = ({ item }) => {
                   className='text-14 text-color-2 text-bold'
                   id='id'
                   defaultValue={item.deadline}
+                  onChange={dateHandler}
+                  onBlur={saveNewDate}
                 />
               </div>
               <div className='description'>
@@ -164,9 +209,12 @@ const EachTaskComponent = ({ item }) => {
                 </svg>
 
                 <textarea
+                  ref={textAreaInput}
                   rows={3}
                   className='text-14 text-color-2'
                   defaultValue={item.notes}
+                  onBlur={saveDescriptionValue}
+                  onChange={descriptionHandler}
                 />
               </div>
             </motion.div>
