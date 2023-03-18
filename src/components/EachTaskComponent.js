@@ -48,12 +48,23 @@ const EachTaskComponent = ({ item }) => {
       exit={{ opacity: 0, y: 50 }}
     >
       <div className='checkboxContainer'>
-        <input type='checkbox' name='finished' id='finished' />
+        <input
+          type='checkbox'
+          name='finished'
+          id='finished'
+          defaultChecked={item.finished === "true" ? true : false}
+        />
       </div>
       <div className='right'>
         <div className='header'>
           <div className='left'>
-            <div className='title text text-14 text-bold'>{item.title}</div>
+            <div
+              className={`title text text-14 text-bold ${
+                item.finished === "true" ? "finished" : ""
+              }`}
+            >
+              {item.title}
+            </div>
           </div>
           <div className='right-header text-14'>
             {item.finished === "false" && (
