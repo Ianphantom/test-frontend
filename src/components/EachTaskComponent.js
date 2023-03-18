@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 const EachTaskComponent = ({ item }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -23,17 +22,32 @@ const EachTaskComponent = ({ item }) => {
     setIsMoreClicked(!isMoreClicked);
   };
 
-  const countDown = (deadline) => {
-    const deeadlineData = deadline.split("/");
+  const refactorDate = (deadline) => {
+    const deeadlineData = deadline.split("-");
+    // console.log(deeadlineData);
     const deeadlineDate = new Date(
-      `${deeadlineData[1]}/${deeadlineData[0]}/${deeadlineData[2]}`
+      `${deeadlineData[1]}/${deeadlineData[2]}/${deeadlineData[0]}`
     );
+    return deeadlineDate;
+  };
+
+  const countDown = (deadline) => {
+    const deadlineDate = refactorDate(deadline);
+    // console.log(deadlineDate.getDate());
     const daysLeft =
-      (deeadlineDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24);
+      (deadlineDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24);
 
     return (
       <div className='countdown text-color-4'>{`${daysLeft} Day Left`}</div>
     );
+  };
+
+  const getDeadline = (deadline) => {
+    const deadlineDate = refactorDate(deadline);
+    const constructDate = `${deadlineDate.getDate()}/${
+      deadlineDate.getMonth() + 1
+    }/${deadlineDate.getFullYear()}`;
+    return <div className='date'>{constructDate}</div>;
   };
 
   useEffect(() => {
@@ -70,7 +84,7 @@ const EachTaskComponent = ({ item }) => {
             {item.finished === "false" && (
               <React.Fragment>{countDown(item.deadline)}</React.Fragment>
             )}
-            <div className='date'>{item.deadline}</div>
+            <React.Fragment>{getDeadline(item.deadline)}</React.Fragment>
             <div className='toogleContainer'>
               {isClicked && (
                 <img
@@ -130,6 +144,7 @@ const EachTaskComponent = ({ item }) => {
                   name='date-deadline'
                   className='text-14 text-color-2 text-bold'
                   id='id'
+                  defaultValue={item.deadline}
                 />
               </div>
               <div className='description'>

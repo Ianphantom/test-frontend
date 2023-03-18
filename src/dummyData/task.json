@@ -5,7 +5,7 @@
       "tag": "Urgent To-Do",
       "finished": "false",
       "title": "Close off Case #012920- RODRIGUES, Amiguel",
-      "deadline": "12/06/2021",
+      "deadline": "2021-06-12",
       "notes": "Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!"
     },
     {
@@ -13,7 +13,7 @@
       "tag": "Urgent To-Do",
       "finished": "false",
       "title": "Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203",
-      "deadline": "12/06/2021",
+      "deadline": "2021-06-14",
       "notes": "All Cases must include all payment transactions, all documents and forms filled. All conversations in comments and messages in channels and emails should be provided as well in."
     },
     {
@@ -21,7 +21,7 @@
       "tag": "Personal Errands",
       "finished": "false",
       "title": "Set up appointment with Dr Blake",
-      "deadline": "22/06/2021",
+      "deadline": "2021-06-22",
       "notes": "No Description"
     },
     {
@@ -29,7 +29,7 @@
       "tag": "Personal Errands",
       "finished": "true",
       "title": "Contact Mr Caleb video conference",
-      "deadline": "3/06/2021",
+      "deadline": "2021-06-03",
       "notes": "No Description"
     },
     {
@@ -37,7 +37,7 @@
       "tag": "Urgent To-Do",
       "finished": "true",
       "title": "Assign 3 homework to Client A",
-      "deadline": "2/06/2021",
+      "deadline": "2021-06-02",
       "notes": "No Description"
     }
   ]
