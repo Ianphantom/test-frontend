@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // import component
 import ActiveWidget from "./ActiveWidget";
 import UtilsInboxContainer from "./UtilsInboxContainer";
+import TaskContainer from "./TaskContainer";
 
 // import svg-icon
 import thunder from "../images/svg-icon/thunder.svg";
@@ -58,10 +59,11 @@ const Utils = () => {
           exit={{ opacity: 0, y: 50 }}
           className='text-container bg-light'
         >
-          {activeWidget === "Inbox" ? (
-            <UtilsInboxContainer />
-          ) : (
-            <UtilsInboxContainer />
+          {activeWidget === "Inbox" && (
+            <UtilsInboxContainer quicksMainHandler={quicksMainHandler} />
+          )}
+          {activeWidget !== "Inbox" && (
+            <TaskContainer quicksMainHandler={quicksMainHandler} />
           )}
         </motion.div>
       )}
@@ -98,15 +100,16 @@ const Utils = () => {
             </div>
           )}
         </AnimatePresence>
-
-        {activeWidget === "" ? (
+        {activeWidget === "" && (
           <div
             className='main-icon round-button-main bg-primary'
             onClick={quicksMainHandler}
           >
             <img src={thunder} alt='thunder-icon' />
           </div>
-        ) : (
+        )}
+
+        {activeWidget !== "" && (
           <ActiveWidget
             activeWidget={activeWidget}
             quicksMainHandler={quicksMainHandler}
@@ -126,18 +129,6 @@ const UtilsStyled = styled.div`
     height: 737px;
     margin-bottom: 15px;
     border-radius: 8px;
-    /* overflow-y: auto;
-    position: relative;
-    ::-webkit-scrollbar {
-      width: 14px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border: 4px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-      border-radius: 9999px;
-      background-color: #aaaaaa;
-    } */
   }
   .utils-container {
     display: flex;

@@ -5,26 +5,44 @@ import styled from "styled-components";
 import leftIcon from "../images/svg-icon/left.svg";
 import closeIcon from "../images/svg-icon/close.svg";
 
-const UtilsInboxDetailHeader = () => {
+const UtilsInboxDetailHeader = ({
+  setDetailPage,
+  quicksMainHandler,
+  results,
+}) => {
+  const exitHandler = () => {
+    results.read = "true";
+    quicksMainHandler();
+  };
+  const backHandler = () => {
+    results.read = "true";
+    setDetailPage(0);
+  };
   return (
-    <HeaderContainer>
-      <div className='left'>
-        <img src={leftIcon} alt='left-icon' />
-      </div>
-      <div className='right'>
-        <div className='information'>
-          <div className='title text-16 text-bold text-color-primary'>
-            I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]
+    <>
+      {results.hasOwnProperty("title") && (
+        <HeaderContainer>
+          <div className='left' onClick={backHandler}>
+            <img src={leftIcon} alt='left-icon' />
           </div>
-          <div className='participant text-14 text-regular text-color-2'>
-            3 participant
+          <div className='right'>
+            <div className='information'>
+              <div className='title text-16 text-bold text-color-primary'>
+                {results.title}
+              </div>
+              {results.participant > 1 && (
+                <div className='participant text-14 text-regular text-color-2'>
+                  {`${results.participant} participant`}
+                </div>
+              )}
+            </div>
+            <div className='close' onClick={exitHandler}>
+              <img src={closeIcon} alt='close-icon' />
+            </div>
           </div>
-        </div>
-        <div className='close'>
-          <img src={closeIcon} alt='close-icon' />
-        </div>
-      </div>
-    </HeaderContainer>
+        </HeaderContainer>
+      )}
+    </>
   );
 };
 
