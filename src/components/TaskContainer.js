@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import taskData from "../dummyData/task.json";
 import styled from "styled-components";
 
@@ -8,11 +8,19 @@ import EachTaskComponent from "./EachTaskComponent";
 const TaskContainer = () => {
   const [dataResult, setDataResult] = useState(taskData.data);
   const [nowShowing, setNowShowing] = useState("All Task");
-  console.log(nowShowing);
+  const [dataFilter, setDataFilter] = useState([]);
+
+  useEffect(() => {
+    const filter = nowShowing === "All Task" ? "" : nowShowing;
+    let data = dataResult.filter((item) => item.tag.includes(filter));
+    console.log(data);
+    setDataFilter(data);
+  }, [nowShowing, dataResult]);
+
   return (
     <TaskContainerStyled>
       <TaskHeader nowShowing={nowShowing} setNowShowing={setNowShowing} />
-      {dataResult.map((item) => (
+      {dataFilter.map((item) => (
         <EachTaskComponent key={item.id} item={item} />
       ))}
     </TaskContainerStyled>

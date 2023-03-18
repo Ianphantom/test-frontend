@@ -12,6 +12,7 @@ const TaskHeader = ({ nowShowing, setNowShowing }) => {
 
   const showHandler = (item) => {
     setNowShowing(item);
+    setIsClicked(!isClicked);
   };
   return (
     <TaskHeaderStyled>
