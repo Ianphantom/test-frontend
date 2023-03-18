@@ -6,10 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 const EachTaskComponent = ({ item }) => {
   const [isClicked, setIsClicked] = useState(true);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
+
+  // di hardcode dulu
+  const currentDate = new Date("06/10/2021");
 
   const clickHandler = () => {
     setIsClicked(!isClicked);
@@ -17,6 +21,19 @@ const EachTaskComponent = ({ item }) => {
 
   const setMoreHandler = () => {
     setIsMoreClicked(!isMoreClicked);
+  };
+
+  const countDown = (deadline) => {
+    const deeadlineData = deadline.split("/");
+    const deeadlineDate = new Date(
+      `${deeadlineData[1]}/${deeadlineData[0]}/${deeadlineData[2]}`
+    );
+    const daysLeft =
+      (deeadlineDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24);
+
+    return (
+      <div className='countdown text-color-4'>{`${daysLeft} Day Left`}</div>
+    );
   };
 
   useEffect(() => {
@@ -33,7 +50,9 @@ const EachTaskComponent = ({ item }) => {
             <div className='title text text-14 text-bold'>{item.title}</div>
           </div>
           <div className='right-header text-14'>
-            <div className='countdown text-color-4'>2 Day Left</div>
+            {item.finished === "false" && (
+              <React.Fragment>{countDown(item.deadline)}</React.Fragment>
+            )}
             <div className='date'>{item.deadline}</div>
             <div className='toogleContainer'>
               {isClicked && (
