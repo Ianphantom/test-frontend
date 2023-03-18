@@ -6,16 +6,15 @@ import TaskHeader from "./TaskHeader";
 import EachTaskComponent from "./EachTaskComponent";
 
 const TaskContainer = () => {
-  const [dataResult, setDataResutl] = useState(taskData.data);
+  const [dataResult, setDataResult] = useState(taskData.data);
   const [nowShowing, setNowShowing] = useState("All Task");
   console.log(nowShowing);
   return (
     <TaskContainerStyled>
       <TaskHeader nowShowing={nowShowing} setNowShowing={setNowShowing} />
-      <EachTaskComponent />
-      <EachTaskComponent />
-      <EachTaskComponent />
-      <EachTaskComponent />
+      {dataResult.map((item) => (
+        <EachTaskComponent key={item.id} item={item} />
+      ))}
     </TaskContainerStyled>
   );
 };
