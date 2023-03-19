@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 import down from "../images/svg-icon/down.svg";
 
-const TaskHeader = ({ nowShowing, setNowShowing, setIsLoading, isLoading }) => {
+const TaskHeader = ({
+  nowShowing,
+  setNowShowing,
+  setIsLoading,
+  isLoading,
+  addNewInput,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
@@ -14,6 +20,10 @@ const TaskHeader = ({ nowShowing, setNowShowing, setIsLoading, isLoading }) => {
     setNowShowing(item);
     setIsLoading(!isLoading);
     setIsClicked(!isClicked);
+  };
+
+  const addHandler = () => {
+    addNewInput();
   };
   return (
     <TaskHeaderStyled>
@@ -54,7 +64,10 @@ const TaskHeader = ({ nowShowing, setNowShowing, setIsLoading, isLoading }) => {
         </div>
       </div>
       <div className='right'>
-        <div className='button-container text-color-white text-14 text-bold bg-primary'>
+        <div
+          className='button-container text-color-white text-14 text-bold bg-primary'
+          onClick={addHandler}
+        >
           New Task
         </div>
       </div>

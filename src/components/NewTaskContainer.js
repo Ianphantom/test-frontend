@@ -7,15 +7,25 @@ import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
 
-const NewTaskContainer = ({ item, saveToResult }) => {
+const NewTaskContainer = ({
+  key,
+  item,
+  saveToResult,
+  componentInput,
+  setComponentInput,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
   const [descriptionValue, setDescriptiionValue] = useState("");
-  const [finishedStatus, setFinishedStatus] = useState(item.finished);
-  const [dateValue, setDateValue] = useState(item.deadline);
+  const [finishedStatus, setFinishedStatus] = useState("");
+  const [dateValue, setDateValue] = useState("");
 
   const textAreaInput = useRef(null);
 
+  const deleteNew = () => {
+    const newData = componentInput.filter((item) => item.key !== key);
+    setComponentInput(newData);
+  };
   const descriptionHandler = (e) => {
     setDescriptiionValue(e.target.value);
   };
@@ -53,43 +63,12 @@ const NewTaskContainer = ({ item, saveToResult }) => {
     saveToResult(newData);
   };
 
-  // di hardcode dulu
-  const currentDate = new Date("06/10/2021");
-
   const clickHandler = () => {
     setIsClicked(!isClicked);
   };
 
   const setMoreHandler = () => {
     setIsMoreClicked(!isMoreClicked);
-  };
-
-  const refactorDate = (deadline) => {
-    const deeadlineData = deadline.split("-");
-    // console.log(deeadlineData);
-    const deeadlineDate = new Date(
-      `${deeadlineData[1]}/${deeadlineData[2]}/${deeadlineData[0]}`
-    );
-    return deeadlineDate;
-  };
-
-  const countDown = (deadline) => {
-    const deadlineDate = refactorDate(deadline);
-    // console.log(deadlineDate.getDate());
-    const daysLeft =
-      (deadlineDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24);
-
-    return (
-      <div className='countdown text-color-4'>{`${daysLeft} Day Left`}</div>
-    );
-  };
-
-  const getDeadline = (deadline) => {
-    const deadlineDate = refactorDate(deadline);
-    const constructDate = `${deadlineDate.getDate()}/${
-      deadlineDate.getMonth() + 1
-    }/${deadlineDate.getFullYear()}`;
-    return <div className='date'>{constructDate}</div>;
   };
 
   const checkBoxHandler = (e) => {
@@ -107,11 +86,7 @@ const NewTaskContainer = ({ item, saveToResult }) => {
     saveToResult(newData);
   };
 
-  useEffect(() => {
-    if (item.finished !== "true") {
-      setIsClicked(true);
-    }
-  }, [item]);
+  useEffect(() => {}, [item]);
   return (
     <NewTaskContainerStyled
       initial={{ opacity: 0, y: 50 }}
@@ -131,19 +106,11 @@ const NewTaskContainer = ({ item, saveToResult }) => {
       <div className='right'>
         <div className='header'>
           <div className='left'>
-            <div
-              className={`title text text-14 text-bold ${
-                finishedStatus === "true" ? "finished" : ""
-              }`}
-            >
-              {item.title}
+            <div className={` text text-14 text-regular text-color-2`}>
+              <input className='title' type='text' />
             </div>
           </div>
           <div className='right-header text-14'>
-            {item.finished === "false" && (
-              <React.Fragment>{countDown(dateValue)}</React.Fragment>
-            )}
-            <React.Fragment>{getDeadline(dateValue)}</React.Fragment>
             <div className='toogleContainer'>
               {isClicked && (
                 <img
@@ -168,7 +135,10 @@ const NewTaskContainer = ({ item, saveToResult }) => {
                 <img src={more} alt='more-icon' />
               </div>
               {isMoreClicked && (
-                <div className=' delete text-16 text-color-4 bg-light'>
+                <div
+                  className=' delete text-16 text-color-4 bg-light'
+                  onClick={deleteNew}
+                >
                   Delete
                 </div>
               )}
@@ -204,7 +174,7 @@ const NewTaskContainer = ({ item, saveToResult }) => {
                   name='date-deadline'
                   className='text-14 text-color-2 text-bold'
                   id='id'
-                  defaultValue={item.deadline}
+                  defaultValue={"0000/00/00"}
                   onChange={dateHandler}
                   onBlur={saveNewDate}
                 />
@@ -229,7 +199,7 @@ const NewTaskContainer = ({ item, saveToResult }) => {
                   ref={textAreaInput}
                   rows={3}
                   className='text-14 text-color-2'
-                  defaultValue={item.notes}
+                  defaultValue={""}
                   onBlur={saveDescriptionValue}
                   onChange={descriptionHandler}
                 />
@@ -266,12 +236,12 @@ const NewTaskContainerStyled = styled(motion.div)`
       .left {
         display: flex;
         align-items: center;
-
         .title {
-          &.finished {
-            color: #828282;
-            text-decoration: line-through;
-          }
+          width: 380px;
+          padding: 12px 14px;
+          border: none;
+          border-radius: 5px;
+          border: 1px solid #828282;
         }
       }
 

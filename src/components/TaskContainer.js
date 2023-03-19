@@ -5,17 +5,31 @@ import styled from "styled-components";
 import TaskHeader from "./TaskHeader";
 import EachTaskComponent from "./EachTaskComponent";
 import loading from "../images/svg-icon/loading.svg";
+import NewTaskContainer from "./NewTaskContainer";
 
 const TaskContainer = () => {
   const [dataResult, setDataResult] = useState(taskData.data);
   const [nowShowing, setNowShowing] = useState("All Task");
   const [dataFilter, setDataFilter] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [componentInput, setComponentInput] = useState([]);
 
   const saveToResult = (item) => {
     const newData = dataResult;
     newData[item.id - 1] = item;
     setDataResult(newData);
+  };
+
+  const addNewInput = () => {
+    const newData = (
+      <NewTaskContainer
+        key={componentInput.length}
+        componentInput={componentInput}
+        setComponentInput={setComponentInput}
+      />
+    );
+    setComponentInput((prevItems) => [...prevItems, newData]);
+    console.log(componentInput);
   };
 
   useEffect(() => {
@@ -43,6 +57,7 @@ const TaskContainer = () => {
         setNowShowing={setNowShowing}
         setIsLoading={setIsLoading}
         isLoading={isLoading}
+        addNewInput={addNewInput}
       />
 
       {isLoading && (
@@ -51,6 +66,9 @@ const TaskContainer = () => {
           <div className='text-color-2 text-14 '>Loading Tasks</div>
         </div>
       )}
+
+      {componentInput.map((item) => item)}
+
       {!isLoading &&
         dataFilter.map((item) => (
           <EachTaskComponent
