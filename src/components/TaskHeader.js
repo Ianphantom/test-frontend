@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import down from "../images/svg-icon/down.svg";
 
-const TaskHeader = ({ nowShowing, setNowShowing }) => {
+const TaskHeader = ({ nowShowing, setNowShowing, setIsLoading, isLoading }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
@@ -12,6 +12,7 @@ const TaskHeader = ({ nowShowing, setNowShowing }) => {
 
   const showHandler = (item) => {
     setNowShowing(item);
+    setIsLoading(!isLoading);
     setIsClicked(!isClicked);
   };
   return (

@@ -7,7 +7,7 @@ import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
 
-const EachTaskComponent = ({ item, saveToResult }) => {
+const NewTaskContainer = ({ item, saveToResult }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
   const [descriptionValue, setDescriptiionValue] = useState("");
@@ -113,7 +113,7 @@ const EachTaskComponent = ({ item, saveToResult }) => {
     }
   }, [item]);
   return (
-    <EachTaskStyled
+    <NewTaskContainerStyled
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -238,11 +238,11 @@ const EachTaskComponent = ({ item, saveToResult }) => {
           )}
         </AnimatePresence>
       </div>
-    </EachTaskStyled>
+    </NewTaskContainerStyled>
   );
 };
 
-const EachTaskStyled = styled(motion.div)`
+const NewTaskContainerStyled = styled(motion.div)`
   padding: 22px 0px;
   display: flex;
   border-bottom: 1px solid #828282;
@@ -328,4 +328,4 @@ const EachTaskStyled = styled(motion.div)`
   }
 `;
 
-export default EachTaskComponent;
+export default NewTaskContainer;
