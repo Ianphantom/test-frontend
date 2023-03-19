@@ -92,6 +92,12 @@ const TaskContainer = () => {
             deleteTask={deleteTask}
           />
         ))}
+
+      {dataFilter.length === 0 && (
+        <div className='text-14 text-color-2 no-data'>
+          Tidak Ada Task Baru. Silahkan tambah task baru
+        </div>
+      )}
     </TaskContainerStyled>
   );
 };
@@ -122,6 +128,18 @@ const TaskContainerStyled = styled.div`
       width: 60px;
       height: 60px;
     }
+  }
+
+  .no-data {
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1513px) {
+    height: 70vh;
+  }
+
+  @media (max-width: 577px) {
+    height: 80vh;
   }
 `;
 

@@ -118,6 +118,13 @@ const InboxContainer = styled.div`
       height: 60px;
     }
   }
+
+  @media (max-width: 1513px) {
+    height: 70vh;
+  }
+  @media (max-width: 800px) {
+    height: 80vh;
+  }
 `;
 
 export default UtilsInbox;

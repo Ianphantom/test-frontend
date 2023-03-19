@@ -151,6 +151,19 @@ const UtilsStyled = styled.div`
   .hide {
     display: none;
   }
+
+  @media (max-width: 1513px) {
+    .text-container {
+      height: 75vh;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .text-container {
+      height: 80vh;
+      width: 80vw;
+    }
+  }
 `;
 
 export default Utils;
