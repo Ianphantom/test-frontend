@@ -25,6 +25,11 @@ const TaskContainer = () => {
     setDataResult((prevItems) => [...prevItems, newData]);
   };
 
+  const deleteTask = (deleteItem) => {
+    const newData = dataResult.filter((item) => item.id !== deleteItem.id);
+    setDataResult(newData);
+  };
+
   const addNewInput = () => {
     const newData = (
       <NewTaskContainer
@@ -84,6 +89,7 @@ const TaskContainer = () => {
             key={item.id}
             item={item}
             saveToResult={saveToResult}
+            deleteTask={deleteTask}
           />
         ))}
     </TaskContainerStyled>

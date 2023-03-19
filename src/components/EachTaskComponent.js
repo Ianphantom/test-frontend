@@ -7,7 +7,7 @@ import down from "../images/svg-icon/down.svg";
 import up from "../images/svg-icon/up.svg";
 import more from "../images/svg-icon/more.svg";
 
-const EachTaskComponent = ({ item, saveToResult }) => {
+const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMoreClicked, setIsMoreClicked] = useState(false);
   const [descriptionValue, setDescriptiionValue] = useState("");
@@ -168,7 +168,10 @@ const EachTaskComponent = ({ item, saveToResult }) => {
                 <img src={more} alt='more-icon' />
               </div>
               {isMoreClicked && (
-                <div className=' delete text-16 text-color-4 bg-light'>
+                <div
+                  className=' delete text-16 text-color-4 bg-light'
+                  onClick={() => deleteTask(item)}
+                >
                   Delete
                 </div>
               )}
