@@ -20,12 +20,21 @@ const TaskContainer = () => {
     setDataResult(newData);
   };
 
+  const saveNewTask = (item) => {
+    const newData = item;
+    setDataResult((prevItems) => [...prevItems, newData]);
+  };
+
   const addNewInput = () => {
     const newData = (
       <NewTaskContainer
         key={componentInput.length}
+        idItem={componentInput.length}
         componentInput={componentInput}
         setComponentInput={setComponentInput}
+        nowShowing={nowShowing}
+        dataResult={dataResult}
+        saveNewTask={saveNewTask}
       />
     );
     setComponentInput((prevItems) => [...prevItems, newData]);
