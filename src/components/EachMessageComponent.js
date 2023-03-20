@@ -14,6 +14,11 @@ const EachMessegeComponent = ({ item, id, setReplyChat }) => {
         }
       >
         <div className='sender text-14 text-bold'>{item.sender}</div>
+        {item.reply_to !== "" && (
+          <div className='reply-container text-color-2 text-14'>
+            {item.reply_to}
+          </div>
+        )}
         <div className='bottom'>
           <div className='messegeContainer'>
             <div className='text-14 text-color-2 text-regular'>
@@ -77,6 +82,15 @@ const EachComponent = styled.div`
 
   .sender {
     margin-bottom: 7px;
+  }
+
+  .reply-container {
+    max-width: 70%;
+    background: #f2f2f2;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-bottom: 9px;
   }
 
   .messegeContainer {

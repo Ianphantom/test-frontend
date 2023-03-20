@@ -37,6 +37,7 @@ const MoreStyled = styled.div`
 
   .more-information {
     position: absolute;
+    z-index: 5;
     background: #ffffff;
     width: 126px;
     border: 1px solid #bdbdbd;
