@@ -6,7 +6,7 @@
       "finished": "false",
       "title": "Close off Case #012920- RODRIGUES, Amiguel",
       "deadline": "2021-06-12",
-      "tagList" : ["Important ASAP", "Offline Meeting", "Appointmets", "Court Related", "Virtual Meeting", "ASAP","Client Related", "Self Task"],
+      "tagList" : ["Important ASAP", "Offline Meeting"],
       "notes": "Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!"
     },
     {
@@ -33,7 +33,7 @@
       "finished": "true",
       "title": "Contact Mr Caleb video conference",
       "deadline": "2021-06-03",
-      "tagList" : ["Appointmets", "Court Related"],
+      "tagList" : ["Appointments", "Court Related"],
       "notes": "No Description"
     },
     {
