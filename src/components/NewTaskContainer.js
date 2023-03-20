@@ -52,6 +52,7 @@ const NewTaskContainer = ({
       title: titleValue,
       deadline: dateValue,
       notes: descriptionValue,
+      tagList: [],
     };
     console.log(newData);
     saveNewTask(newData);
