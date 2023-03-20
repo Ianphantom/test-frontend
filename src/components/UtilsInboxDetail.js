@@ -43,8 +43,10 @@ const UtilsInboxDetail = ({
         messege: `${inputUser}`,
         date: "03/06/2021",
         time: "19:39",
-        repyly_to: "0",
+        reply_to: replyChat.messege,
       };
+
+      console.log(newMessege);
 
       const lastMessage = {
         sender: "you",
@@ -57,6 +59,7 @@ const UtilsInboxDetail = ({
       results.last_messege = lastMessage;
       results.last_chat_read = `${last_id + 1}`;
       setInputUser("");
+      setReplyChat("");
     }
 
     // setDataSementara(dataSementara.chats.push(newMessege));
