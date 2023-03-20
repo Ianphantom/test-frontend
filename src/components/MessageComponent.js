@@ -5,7 +5,12 @@ import styled from "styled-components";
 // import component
 import EachMessegeComponent from "./EachMessageComponent";
 
-const MessageComponent = ({ results, setResult, setIsVisible }) => {
+const MessageComponent = ({
+  results,
+  setResult,
+  setIsVisible,
+  setReplyChat,
+}) => {
   const newRef = React.createRef();
   const containerRef = useRef(null);
   const [user] = useState(
@@ -70,7 +75,11 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
             {checkNewMessege && !isMeSender && !isReaded && (
               <NewMessegeIndicator ref={newRef} />
             )}
-            <EachMessegeComponent item={item} id={getById(item.sender)} />
+            <EachMessegeComponent
+              setReplyChat={setReplyChat}
+              item={item}
+              id={getById(item.sender)}
+            />
           </div>
         );
       } else {
@@ -79,7 +88,11 @@ const MessageComponent = ({ results, setResult, setIsVisible }) => {
             {checkNewMessege && !isMeSender && !isReaded && (
               <NewMessegeIndicator ref={newRef} />
             )}
-            <EachMessegeComponent item={item} id={getById(item.sender)} />
+            <EachMessegeComponent
+              setReplyChat={setReplyChat}
+              item={item}
+              id={getById(item.sender)}
+            />
           </div>
         );
       }

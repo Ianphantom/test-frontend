@@ -20,6 +20,7 @@ const UtilsInboxDetail = ({
   );
   const [isVisible, setIsVisible] = useState(true);
   const [inputUser, setInputUser] = useState("");
+  const [replyChat, setReplyChat] = useState("");
 
   const scrollHandler = () => {
     const scrollDiv = document.querySelector(`.new-messege`);
@@ -42,8 +43,10 @@ const UtilsInboxDetail = ({
         messege: `${inputUser}`,
         date: "03/06/2021",
         time: "19:39",
-        repyly_to: "0",
+        reply_to: replyChat.messege,
       };
+
+      console.log(newMessege);
 
       const lastMessage = {
         sender: "you",
@@ -56,6 +59,7 @@ const UtilsInboxDetail = ({
       results.last_messege = lastMessage;
       results.last_chat_read = `${last_id + 1}`;
       setInputUser("");
+      setReplyChat("");
     }
 
     // setDataSementara(dataSementara.chats.push(newMessege));
@@ -95,6 +99,7 @@ const UtilsInboxDetail = ({
           setResults={setResults}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          setReplyChat={setReplyChat}
         />
       )}
 
@@ -123,13 +128,40 @@ const UtilsInboxDetail = ({
           )}
 
         <div className='reply bg-light'>
-          <input
-            className='text-14'
-            type='text'
-            placeholder='Type a new message'
-            onChange={inputHandler}
-            value={inputUser}
-          />
+          <div className='reply-container'>
+            {replyChat.hasOwnProperty("id_message") && (
+              <div className='reply-chat'>
+                <div className='left'>
+                  <div className='text-14 text-bold'>
+                    {`Replying to ${replyChat.sender}`}
+                  </div>
+                  <div className='text-14'>{replyChat.messege}</div>
+                </div>
+                <svg
+                  width='16'
+                  height='16'
+                  viewBox='0 0 12 12'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                  onClick={() => setReplyChat("")}
+                >
+                  <path
+                    d='M12 1.20857L10.7914 0L6 4.79143L1.20857 0L0 1.20857L4.79143 6L0 10.7914L1.20857 12L6 7.20857L10.7914 12L12 10.7914L7.20857 6L12 1.20857Z'
+                    fill='#4F4F4F'
+                  />
+                </svg>
+              </div>
+            )}
+
+            <input
+              className='text-14'
+              type='text'
+              placeholder='Type a new message'
+              onChange={inputHandler}
+              value={inputUser}
+            />
+          </div>
+
           <div
             className='button text-14 text-color-white bg-primary'
             onClick={sendHandler}
@@ -166,8 +198,14 @@ const InboxDetailStyled = styled(motion.div)`
     .reply {
       padding: 19px 32px;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       gap: 13px;
+      .reply-container {
+        width: 100%;
+        svg {
+          cursor: pointer;
+        }
+      }
       input {
         width: 100%;
         padding: 12px 16px;
@@ -180,6 +218,15 @@ const InboxDetailStyled = styled(motion.div)`
         width: fit-content;
         padding: 12px 16px;
         border-radius: 8px;
+      }
+
+      .reply-chat {
+        display: flex;
+        gap: 25px;
+        padding: 12px 16px;
+        background: #f2f2f2;
+        justify-content: space-between;
+        border: 1px solid #828282;
       }
     }
 

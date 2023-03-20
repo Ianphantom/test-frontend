@@ -6,6 +6,7 @@
       "finished": "false",
       "title": "Close off Case #012920- RODRIGUES, Amiguel",
       "deadline": "2021-06-12",
+      "tagList" : ["Important ASAP", "Offline Meeting"],
       "notes": "Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!"
     },
     {
@@ -14,6 +15,7 @@
       "finished": "false",
       "title": "Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203",
       "deadline": "2021-06-14",
+      "tagList" : ["Virtual Meeting", "ASAP"],
       "notes": "All Cases must include all payment transactions, all documents and forms filled. All conversations in comments and messages in channels and emails should be provided as well in."
     },
     {
@@ -22,6 +24,7 @@
       "finished": "false",
       "title": "Set up appointment with Dr Blake",
       "deadline": "2021-06-22",
+      "tagList" : ["Client Related", "Self Task"],
       "notes": "No Description"
     },
     {
@@ -30,6 +33,7 @@
       "finished": "true",
       "title": "Contact Mr Caleb video conference",
       "deadline": "2021-06-03",
+      "tagList" : ["Appointments", "Court Related"],
       "notes": "No Description"
     },
     {
@@ -38,6 +42,7 @@
       "finished": "true",
       "title": "Assign 3 homework to Client A",
       "deadline": "2021-06-02",
+      "tagList" : [],
       "notes": "No Description"
     }
   ]

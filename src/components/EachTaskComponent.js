@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -13,6 +13,9 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
   const [descriptionValue, setDescriptiionValue] = useState("");
   const [finishedStatus, setFinishedStatus] = useState(item.finished);
   const [dateValue, setDateValue] = useState(item.deadline);
+
+  const [tagHave, setTagHave] = useState(item.tagList);
+  const [tagIsClicked, setTagIsClicked] = useState(false);
 
   const textAreaInput = useRef(null);
 
@@ -107,11 +110,39 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
     saveToResult(newData);
   };
 
+  const renderAllTag = (tagList) => {
+    const data = tagList.map((item) => (
+      <div
+        key={item}
+        className={`${item.toLowerCase()} each-tag text-14 text-color-2 text-bold`}
+      >
+        {item}
+      </div>
+    ));
+    return data;
+  };
+
+  const addNewTagHandler = (tagTitle) => {
+    if (!tagHave.includes(tagTitle)) {
+      setTagHave((previtem) => [...previtem, tagTitle]);
+    }
+    // refactorNewTag();
+  };
+
   useEffect(() => {
     if (item.finished !== "true") {
       setIsClicked(true);
     }
-  }, [item]);
+    const refactorNewTag = () => {
+      const newData = {
+        ...item,
+        tagList: tagHave,
+      };
+      // console.log(newData);
+      saveToResult(newData);
+    };
+    refactorNewTag();
+  }, [item, tagHave, saveToResult]);
   return (
     <EachTaskStyled
       initial={{ opacity: 0, y: 50 }}
@@ -237,6 +268,83 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
                   onChange={descriptionHandler}
                 />
               </div>
+              <div className='tag'>
+                <div className='tag-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 20 20'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                    onClick={() => setTagIsClicked(!tagIsClicked)}
+                  >
+                    <path
+                      fillRule='evenodd'
+                      clipRule='evenodd'
+                      d='M15.4032 0.833374H7.52334C6.65742 0.833374 5.95681 1.58337 5.95681 2.50004H13.8288C14.6947 2.50004 15.4032 3.25004 15.4032 4.16671V15L16.9776 15.8334V2.50004C16.9776 1.58337 16.2691 0.833374 15.4032 0.833374ZM12.2545 5.83337V16.6417L8.94038 15.1334L8.31849 14.85L7.69661 15.1334L4.38249 16.6417V5.83337H12.2545ZM4.38245 4.16671H12.2545C13.1204 4.16671 13.8289 4.91671 13.8289 5.83337V19.1667L8.31845 16.6667L2.80804 19.1667V5.83337C2.80804 4.91671 3.51653 4.16671 4.38245 4.16671Z'
+                      fill={tagHave.length > 0 ? "#2F80ED" : "#828282"}
+                    />
+                  </svg>
+                  {tagIsClicked && (
+                    <div className='allTagContainer bg-light'>
+                      <div
+                        className='important tag-list-item'
+                        onClick={() => addNewTagHandler("Important ASAP")}
+                        onBlur={() => console.log("heheheh")}
+                      >
+                        Important ASAP
+                      </div>
+                      <div
+                        className='offline tag-list-item'
+                        onClick={() => addNewTagHandler("Offline Meeting")}
+                      >
+                        Offline Meeting
+                      </div>
+                      <div
+                        className='virtual tag-list-item'
+                        onClick={() => addNewTagHandler("Virtual Meeting")}
+                      >
+                        Virtual Meeting
+                      </div>
+                      <div
+                        className='asap tag-list-item'
+                        onClick={() => addNewTagHandler("ASAP")}
+                      >
+                        ASAP
+                      </div>
+                      <div
+                        className='client tag-list-item'
+                        onClick={() => addNewTagHandler("Client Related")}
+                      >
+                        Client Related
+                      </div>
+                      <div
+                        className='self tag-list-item'
+                        onClick={() => addNewTagHandler("Self Task")}
+                      >
+                        {" "}
+                        Self Task
+                      </div>
+                      <div
+                        className='appointments tag-list-item'
+                        onClick={() => addNewTagHandler("Appointments")}
+                      >
+                        Appointments
+                      </div>
+                      <div
+                        className='court tag-list-item'
+                        onClick={() => addNewTagHandler("Court Related")}
+                      >
+                        Court Related
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className='tag-container'>
+                  <React.Fragment>{renderAllTag(tagHave)}</React.Fragment>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -326,6 +434,80 @@ const EachTaskStyled = styled(motion.div)`
         width: 100%;
         border: none;
         resize: none;
+      }
+    }
+
+    .tag {
+      display: flex;
+      gap: 18px;
+      margin-top: 15px;
+
+      .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag-icon {
+        position: relative;
+        svg {
+          cursor: pointer;
+        }
+        .allTagContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .tag-list-item {
+            width: 246px;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 5px;
+          }
+          position: absolute;
+          z-index: 4;
+          padding: 14px 16px;
+          border: 1px solid #828282;
+          border-radius: 5px;
+        }
+      }
+
+      .each-tag {
+        padding: 8px 12px;
+        border-radius: 5px;
+      }
+      .item-select {
+        cursor: pointer;
+      }
+
+      .important {
+        background: #e5f1ff;
+      }
+
+      .offline {
+        background: #fdcfa4;
+      }
+
+      .virtual {
+        background: #f9e9c3;
+      }
+
+      .asap {
+        background: #afebdb;
+      }
+
+      .client {
+        background: #cbf1c2;
+      }
+      .self {
+        background: #cfcef9;
+      }
+
+      .appointments {
+        background: #f9e0fd;
+      }
+
+      .court {
+        background: #9dd0ed;
       }
     }
   }

@@ -35,7 +35,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "02/06/2021",
           "time": "19:32",
-          "repyly_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "2",
@@ -43,7 +43,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:33",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "3",
@@ -51,7 +51,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:34",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "4",
@@ -59,7 +59,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:35",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "5",
@@ -67,7 +67,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "03/06/2021",
           "time": "19:36",
-          "repyly_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "6",
@@ -75,7 +75,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:37",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "7",
@@ -83,7 +83,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:38",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "8",
@@ -91,7 +91,7 @@
           "messege": "Plese check this out!",
           "date": "03/06/2021",
           "time": "19:39",
-          "repyly_to": "0"
+          "reply_to": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks."
         }
       ]
     },
@@ -130,7 +130,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "02/06/2021",
           "time": "19:32",
-          "repyly_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "2",
@@ -138,7 +138,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:33",
-          "reply_to": "0"
+          "reply_to": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks."
         },
         {
           "id_message": "3",
@@ -146,7 +146,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:34",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "4",
@@ -154,7 +154,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:35",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "5",
@@ -162,7 +162,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "03/06/2021",
           "time": "19:36",
-          "repyly_to": "0"
+          "reply_to": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary."
         },
         {
           "id_message": "6",
@@ -170,7 +170,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:37",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "7",
@@ -178,7 +178,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:38",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "8",
@@ -186,7 +186,7 @@
           "messege": "Hey, please read!",
           "date": "03/06/2021",
           "time": "19:39",
-          "repyly_to": "0"
+          "reply_to": ""
         }
       ]
     },
@@ -225,7 +225,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "02/06/2021",
           "time": "19:32",
-          "repyly_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "2",
@@ -233,7 +233,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:33",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "3",
@@ -241,7 +241,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:34",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "4",
@@ -249,7 +249,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "02/06/2021",
           "time": "19:35",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "5",
@@ -257,7 +257,7 @@
           "messege": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
           "date": "03/06/2021",
           "time": "19:36",
-          "repyly_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "6",
@@ -265,7 +265,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:37",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "7",
@@ -273,7 +273,7 @@
           "messege": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
           "date": "03/06/2021",
           "time": "19:38",
-          "reply_to": "0"
+          "reply_to": ""
         },
         {
           "id_message": "8",
@@ -281,7 +281,7 @@
           "messege": "I understand your initial concerns and thats very valid, Elizabeth. But you ...",
           "date": "03/06/2021",
           "time": "19:39",
-          "repyly_to": "0"
+          "reply_to": ""
         }
       ]
     },
@@ -316,7 +316,7 @@
           "messege": "Hey there! Welcome to your inbox.",
           "date": "02/06/2021",
           "time": "19:32",
-          "repyly_to": "0"
+          "reply_to": ""
         }
       ]
     }
