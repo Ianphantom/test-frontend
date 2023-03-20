@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -13,6 +13,8 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
   const [descriptionValue, setDescriptiionValue] = useState("");
   const [finishedStatus, setFinishedStatus] = useState(item.finished);
   const [dateValue, setDateValue] = useState(item.deadline);
+
+  const [tagHave, setTagHave] = useState(item.tagList);
 
   const textAreaInput = useRef(null);
 
@@ -105,6 +107,15 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
     };
 
     saveToResult(newData);
+  };
+
+  const renderAllTag = (tagList) => {
+    const data = tagList.map((item) => (
+      <div className={`${item.toLowerCase()} each-tag text-14 text-color-2`}>
+        {item}
+      </div>
+    ));
+    return data;
   };
 
   useEffect(() => {
@@ -237,6 +248,25 @@ const EachTaskComponent = ({ item, saveToResult, deleteTask }) => {
                   onChange={descriptionHandler}
                 />
               </div>
+              <div className='tag'>
+                <svg
+                  width='20'
+                  height='20'
+                  viewBox='0 0 20 20'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    fillRule='evenodd'
+                    clipRule='evenodd'
+                    d='M15.4032 0.833374H7.52334C6.65742 0.833374 5.95681 1.58337 5.95681 2.50004H13.8288C14.6947 2.50004 15.4032 3.25004 15.4032 4.16671V15L16.9776 15.8334V2.50004C16.9776 1.58337 16.2691 0.833374 15.4032 0.833374ZM12.2545 5.83337V16.6417L8.94038 15.1334L8.31849 14.85L7.69661 15.1334L4.38249 16.6417V5.83337H12.2545ZM4.38245 4.16671H12.2545C13.1204 4.16671 13.8289 4.91671 13.8289 5.83337V19.1667L8.31845 16.6667L2.80804 19.1667V5.83337C2.80804 4.91671 3.51653 4.16671 4.38245 4.16671Z'
+                    fill={tagHave.length > 0 ? "#2F80ED" : "#828282"}
+                  />
+                </svg>
+                <div className='tag-container'>
+                  <React.Fragment>{renderAllTag(tagHave)}</React.Fragment>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -326,6 +356,57 @@ const EachTaskStyled = styled(motion.div)`
         width: 100%;
         border: none;
         resize: none;
+      }
+    }
+
+    .tag {
+      display: flex;
+      gap: 18px;
+      margin-top: 15px;
+
+      .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .each-tag {
+        padding: 8px 12px;
+        border-radius: 5px;
+      }
+      .item-select {
+        cursor: pointer;
+      }
+
+      .important {
+        background: #e5f1ff;
+      }
+
+      .offline {
+        background: #fdcfa4;
+      }
+
+      .virtual {
+        background: #f9e9c3;
+      }
+
+      .asap {
+        background: #afebdb;
+      }
+
+      .client {
+        background: #cbf1c2;
+      }
+      .self {
+        background: #cfcef9;
+      }
+
+      .appointmets {
+        background: #f9e0fd;
+      }
+
+      .court {
+        background: #9dd0ed;
       }
     }
   }
