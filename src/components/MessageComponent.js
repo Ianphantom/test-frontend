@@ -134,6 +134,10 @@ const MessageContainer = styled(motion.div)`
     color: #eb5757 !important;
     border-bottom: 1px solid #eb5757 !important;
   }
+
+  @media (max-width: 1513px) {
+    height: 55vh;
+  }
 `;
 
 export default MessageComponent;

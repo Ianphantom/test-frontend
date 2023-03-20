@@ -200,6 +200,14 @@ const InboxDetailStyled = styled(motion.div)`
       }
     }
   }
+
+  @media (max-width: 1513px) {
+    height: 70vh;
+  }
+
+  @media (max-width: 800px) {
+    height: 80vh;
+  }
 `;
 
 export default UtilsInboxDetail;

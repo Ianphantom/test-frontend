@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 import down from "../images/svg-icon/down.svg";
 
-const TaskHeader = ({ nowShowing, setNowShowing }) => {
+const TaskHeader = ({
+  nowShowing,
+  setNowShowing,
+  setIsLoading,
+  isLoading,
+  addNewInput,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
@@ -12,13 +18,21 @@ const TaskHeader = ({ nowShowing, setNowShowing }) => {
 
   const showHandler = (item) => {
     setNowShowing(item);
+    setIsLoading(!isLoading);
+    setIsClicked(!isClicked);
+  };
+
+  const addHandler = () => {
+    addNewInput();
   };
   return (
     <TaskHeaderStyled>
       <div className='left'>
         <div className='mytask'>
           <div className='button' onClick={clickHandler}>
-            <div className='text text-14 text-bold text-color-2'>My Task</div>
+            <div className='text text-14 text-bold text-color-2'>
+              {nowShowing}
+            </div>
             <div>
               <img src={down} alt='down-icon' />
             </div>
@@ -50,7 +64,10 @@ const TaskHeader = ({ nowShowing, setNowShowing }) => {
         </div>
       </div>
       <div className='right'>
-        <div className='button-container text-color-white text-14 text-bold bg-primary'>
+        <div
+          className='button-container text-color-white text-14 text-bold bg-primary'
+          onClick={addHandler}
+        >
           New Task
         </div>
       </div>
@@ -82,6 +99,7 @@ const TaskHeaderStyled = styled.div`
         border-radius: 5px;
         position: absolute;
         .item-option {
+          cursor: pointer;
           padding: 13px 13px;
         }
       }
