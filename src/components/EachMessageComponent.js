@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import MoreComponent from "./MoreComponent";
 
-const EachMessegeComponent = ({ item, id }) => {
+const EachMessegeComponent = ({ item, id, setReplyChat }) => {
   return (
     <>
       <EachComponent
@@ -23,7 +23,7 @@ const EachMessegeComponent = ({ item, id }) => {
               {item.time}
             </div>
           </div>
-          <MoreComponent />
+          <MoreComponent setReplyChat={setReplyChat} item={item} />
         </div>
       </EachComponent>
     </>
