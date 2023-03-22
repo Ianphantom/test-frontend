@@ -26,8 +26,7 @@ const TaskContainer = () => {
   };
 
   const deleteTask = (deleteItem) => {
-    const newData = dataResult.filter((item) => item.id !== deleteItem.id);
-    setDataResult(newData);
+    setDataResult(dataResult.filter((item) => item.id !== deleteItem.id));
   };
 
   const addNewInput = () => {
